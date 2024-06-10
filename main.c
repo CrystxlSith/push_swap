@@ -6,7 +6,7 @@
 /*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 18:50:00 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/06/10 15:18:12 by jopfeiff         ###   ########.fr       */
+/*   Updated: 2024/06/10 15:53:39 by jopfeiff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ int main(int argc, char const *argv[])
 {
 	if (argc < 2)
 	{
-		ft_putstr("Error\n");
+		ft_printf("Error\n");
 		return (1);
 	}
-	ft_putstr(argv[1]);
+	ft_printf(argv[1]);
 	return 0;
 }
