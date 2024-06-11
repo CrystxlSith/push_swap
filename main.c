@@ -6,7 +6,7 @@
 /*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 18:50:00 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/06/11 14:21:33 by jopfeiff         ###   ########.fr       */
+/*   Updated: 2024/06/11 15:16:23 by jopfeiff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
 	head = NULL;
 	tail = NULL;
 	int	i = 0;
-	if (argc == 1 || argc == 2 && !argv[1][0])
+	if ((argc == 1) || (argc == 2 && !argv[1][0]))
 		return (0);
 	else if (argc == 2)
 		argv = ft_split(argv[1], ' ');

@@ -6,7 +6,7 @@
 /*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 15:32:00 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/06/10 15:33:40 by jopfeiff         ###   ########.fr       */
+/*   Updated: 2024/06/11 15:24:27 by jopfeiff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ static char	**split(char const *s, char c, char **res, size_t count)
 	return (res);
 }
 
-char	**ft_split(char const *s, char c)
+static char	**ft_split(char const *s, char c)
 {
 	char	**array;
 	size_t	nb;
