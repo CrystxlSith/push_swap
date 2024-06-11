@@ -1,34 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   list_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/07 18:50:00 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/06/11 14:21:33 by jopfeiff         ###   ########.fr       */
+/*   Created: 2024/06/11 14:15:55 by jopfeiff          #+#    #+#             */
+/*   Updated: 2024/06/11 14:40:17 by jopfeiff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int main(int argc, char *argv[])
+void	list_init(t_node **head, char **argv)
 {
-	t_node	*head;
-	t_node	*tail;
-	
-	head = NULL;
-	tail = NULL;
-	int	i = 0;
-	if (argc == 1 || argc == 2 && !argv[1][0])
-		return (0);
-	else if (argc == 2)
-		argv = ft_split(argv[1], ' ');
-	list_init(&head, argv);
+	long	nbr;
+	int	i;
+
+	i = 0;
+	nbr = 0;
+
 	while (argv[i])
 	{
-		ft_printf("argv: %s\n", argv[i]);
-		i++;
+		nbr = ft_long_atoi(*argv);
+		if (check_nbr(nbr) == 0)
+			free_list(head, argv);
+		if (repeat(head, nbr))
+			free_list(head, argv);
+		i++;;
 	}
-	return 0;
 }
