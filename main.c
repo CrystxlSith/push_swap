@@ -6,49 +6,24 @@
 /*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 18:50:00 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/06/11 11:26:44 by jopfeiff         ###   ########.fr       */
+/*   Updated: 2024/06/11 13:02:13 by jopfeiff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int main(void)
+int main(int argc, char *argv[])
 {
-	Node *tail = malloc(sizeof(Node));
-	if (tail == NULL)
+	int	i = 0;
+	if (argc == 1 || argc == 2 && !argv[1][0])
+		return (0);
+	else if (argc == 2)
+		argv = ft_split(argv[1], ' ');
+	while (argv[i])
 	{
-		ft_printf("Error\n");
-		return (1);
+		ft_printf("argv: %s\n", argv[i]);
+		i++;
 	}
-	tail->data = 1;
-	tail->prev = NULL;
-	tail->next = malloc(sizeof(Node));
-	if (!tail->next)
-	{
-		free(tail);
-		ft_printf("Error\n");
-		return (2);
-	}
-	tail->next->data = 2;
-	tail->next->prev = tail;
-	tail->next->next = malloc(sizeof(Node));
-	if (!tail->next->next)
-	{
-		free(tail->next);
-		free(tail);
-		ft_printf("Error\n");
-		return (3);
-	}
-	while (tail->next)
-	{
-		ft_printf("%d\n", tail->data);
-		tail = tail->next;
-	}
-	// if (argc < 2)
-	// {
-	// 	ft_printf("Error\n");
-	// 	return (1);
-	// }
-	// ft_printf(argv[1]);
+	
 	return 0;
 }
