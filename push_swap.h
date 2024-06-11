@@ -6,7 +6,7 @@
 /*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 14:59:05 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/06/10 15:33:33 by jopfeiff         ###   ########.fr       */
+/*   Updated: 2024/06/11 11:15:56 by jopfeiff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@
 # include <limits.h>
 
 static char	**split(char const *s, char c, char **res, size_t count);
-
+typedef struct Node
+{
+	int data;
+	struct Node *next;
+	struct Node *prev;
+} Node;
 
 #endif
