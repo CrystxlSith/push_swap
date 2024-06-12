@@ -1,34 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   node_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/07 18:50:00 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/06/12 13:17:55 by jopfeiff         ###   ########.fr       */
+/*   Created: 2024/06/12 11:49:02 by jopfeiff          #+#    #+#             */
+/*   Updated: 2024/06/12 14:38:06 by jopfeiff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int main(int argc, char *argv[])
+void	node_init(t_node **node, int nbr)
 {
-	t_node	*head;
-	t_node	*tail;
-	
-	head = NULL;
-	tail = NULL;
-	int	i = 0;
-	if ((argc == 1) || (argc == 2 && !argv[1][0]))
-		return (0);
-	else if (argc == 2)
-		argv = ft_split(argv[1], ' ');
-	list_init(&head, argv);
-	while (argv[i])
-	{
-		ft_printf("argv: %s\n", argv[i]);
-		i++;
-	}
-	return 0;
+	t_node	*new;
+	t_node	*last;
+
+	if (!node)
+		return ;
+	new = malloc(sizeof(t_node));
+	if (!new)
+		return ;
+	new->next = NULL;
+	new->data = nbr;
+	new->prev
 }

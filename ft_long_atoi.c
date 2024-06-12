@@ -6,13 +6,13 @@
 /*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 14:24:24 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/06/11 14:24:48 by jopfeiff         ###   ########.fr       */
+/*   Updated: 2024/06/12 11:21:00 by jopfeiff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-long	ft_atoi(const char *nptr)
+long	ft_long_atoi(const char *nptr)
 {
 	long	result;
 	int	sign;
