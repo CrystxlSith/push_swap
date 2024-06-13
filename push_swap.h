@@ -6,7 +6,7 @@
 /*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 14:59:05 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/06/12 14:27:26 by jopfeiff         ###   ########.fr       */
+/*   Updated: 2024/06/13 14:24:32 by jopfeiff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,9 @@ typedef   struct s_node
 /* Gere un argument unique "-5 52 896 58" */
 void	node_init(t_node **node, int nbr);
 char	**ft_split(char const *s, char c);
-void	list_init(t_node **head, char **argv);
+void	list_init(t_node **head, char **argv, int flag);
 long	ft_long_atoi(const char *nptr);
 int	ft_reapeat(t_node *head, int nbr);
 int	check_nbr(long nbr);
+t_node	*find_last(t_node *node);
 #endif
