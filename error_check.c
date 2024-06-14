@@ -6,7 +6,7 @@
 /*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 14:27:26 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/06/11 15:14:56 by jopfeiff         ###   ########.fr       */
+/*   Updated: 2024/06/14 10:41:22 by jopfeiff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,7 @@ int	ft_reapeat(t_node *head, int nbr)
 	while (head)
 	{
 		if (head->data == nbr)
-		{
-			write(2, "Error\n", 6);
 			return (0);
-		}
 		head = head->next;
 	}
 	return (1);

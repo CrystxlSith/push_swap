@@ -6,7 +6,7 @@
 /*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 18:50:00 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/06/13 14:58:42 by jopfeiff         ###   ########.fr       */
+/*   Updated: 2024/06/14 10:56:01 by jopfeiff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int main(int argc, char *argv[])
 	flag = 0;
 	head = NULL;
 	tail = NULL;
-	//int	i = 0;
 	if ((argc == 1) || (argc == 2 && !argv[1][0]))
 		return (0);
 	else if (argc == 2)
@@ -30,10 +29,6 @@ int main(int argc, char *argv[])
 		flag = 1;
 	}
 	list_init(&head, argv, flag);
-	// while (argv[i])
-	// {
-	// 	ft_printf("argv: %s\n", argv[i]);
-	// 	i++;
-	// }
+	free_prog(head, argv, flag, 0);
 	return 0;
 }

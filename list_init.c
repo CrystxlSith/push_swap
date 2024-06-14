@@ -6,7 +6,7 @@
 /*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 14:15:55 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/06/13 15:30:02 by jopfeiff         ###   ########.fr       */
+/*   Updated: 2024/06/14 10:54:50 by jopfeiff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@ void print_list(t_node *head)
         ft_printf("%d -> ", current->data);
         current = current->next;
     }
-    if (current->next == NULL)
+    /*if (current->next == NULL)
     {
 	while (current->prev != NULL)
 	{
         	ft_printf("%d -> ", current->data);
         	current = current->prev;
 	}
-    }
+    }*/
     ft_printf("NULL\n");
 }
 
@@ -37,7 +37,6 @@ void	list_init(t_node **head, char **argv, int flag)
 	long	nbr;
 	int	i;
 
-	*head = NULL;
 	i = 0;
 	nbr = 0;
 	if (!flag)
@@ -50,13 +49,11 @@ void	list_init(t_node **head, char **argv, int flag)
 		nbr = ft_long_atoi(argv[i]);
 		if (!check_nbr(nbr))
 		{
-			ft_printf("free\n");
-			//free_list(head, argv);
+			free_prog(*head, argv, flag, 1);
 		}
 		if (!ft_reapeat(*head, (int)nbr))
 		{
-			ft_printf("free\n");
-			//free_list(head, argv);
+			free_prog(*head, argv, flag, 1);
 		}
 		else
 		{
