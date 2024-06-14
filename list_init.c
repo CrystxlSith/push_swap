@@ -6,36 +6,29 @@
 /*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 14:15:55 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/06/14 10:54:50 by jopfeiff         ###   ########.fr       */
+/*   Updated: 2024/06/14 14:04:01 by jopfeiff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void print_list(t_node *head)
+void	print_list(t_node *head)
 {
-    t_node *current = head;
-    while (current != NULL)
-    {
-        ft_printf("%d -> ", current->data);
-        current = current->next;
-    }
-    /*if (current->next == NULL)
-    {
-	while (current->prev != NULL)
-	{
-        	ft_printf("%d -> ", current->data);
-        	current = current->prev;
-	}
-    }*/
-    ft_printf("NULL\n");
-}
+	t_node	*current;
 
+	current = head;
+	while (current != NULL)
+	{
+		ft_printf("%d -> ", current->data);
+		current = current->next;
+	}
+	ft_printf("NULL\n");
+}
 
 void	list_init(t_node **head, char **argv, int flag)
 {
+	int		i;
 	long	nbr;
-	int	i;
 
 	i = 0;
 	nbr = 0;
@@ -48,18 +41,11 @@ void	list_init(t_node **head, char **argv, int flag)
 	{
 		nbr = ft_long_atoi(argv[i]);
 		if (!check_nbr(nbr))
-		{
 			free_prog(*head, argv, flag, 1);
-		}
 		if (!ft_reapeat(*head, (int)nbr))
-		{
 			free_prog(*head, argv, flag, 1);
-		}
 		else
-		{
 			node_init(head, (int)nbr);
-			print_list(*head);
-		}
 		i++;
 	}
 }

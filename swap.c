@@ -1,37 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/07 18:50:00 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/06/14 13:59:36 by jopfeiff         ###   ########.fr       */
+/*   Created: 2024/06/14 13:06:01 by jopfeiff          #+#    #+#             */
+/*   Updated: 2024/06/14 14:15:30 by jopfeiff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int main(int argc, char *argv[])
+static void	swap(t_node **a)
 {
-	t_node	*a;
-	t_node	*b;
-	int	flag;
+ t_node	*tmp;
+
+// 	// tmp = NULL;
+// 	// if (!*a || !(*a)->next)
+// 	// 	return ;
+// 	// tmp->data = (*a)->data;
+// 	// *a = (*a)->prev;
+// 	// (*a)->next->data = (*a)->data;
+// 	// (*a)->data = tmp->data;
+// 	// *a = (*a)->next;
+// 	// (*a)->next = NULL; 
+// 	t_node	*tmp;
 	
-	flag = 0;
-	a = NULL;
-	b = NULL;
-	if ((argc == 1) || (argc == 2 && !argv[1][0]))
-		return (0);
-	else if (argc == 2)
-	{
-		argv = ft_split(argv[1], ' ');
-		flag = 1;
-	}
-	list_init(&a, argv, flag);
-	print_list(a);
-	sa(&a);
-	print_list(a);
-	free_prog(b, argv, flag, 0);
-	return 0;
+	tmp = NULL;
+	if (!*a || !(*a)->next)
+		return ;
+	tmp = *a;
+	*a = (*a)->next;
+	tmp->next = (*a)->next;
+	(*a)->next = tmp;	
 }
