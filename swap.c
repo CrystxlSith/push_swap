@@ -6,7 +6,7 @@
 /*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 13:06:01 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/06/14 14:15:30 by jopfeiff         ###   ########.fr       */
+/*   Updated: 2024/06/14 14:18:31 by jopfeiff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,7 @@
 
 static void	swap(t_node **a)
 {
- t_node	*tmp;
-
-// 	// tmp = NULL;
-// 	// if (!*a || !(*a)->next)
-// 	// 	return ;
-// 	// tmp->data = (*a)->data;
-// 	// *a = (*a)->prev;
-// 	// (*a)->next->data = (*a)->data;
-// 	// (*a)->data = tmp->data;
-// 	// *a = (*a)->next;
-// 	// (*a)->next = NULL; 
-// 	t_node	*tmp;
+ 	t_node	*tmp;
 	
 	tmp = NULL;
 	if (!*a || !(*a)->next)
@@ -34,4 +23,23 @@ static void	swap(t_node **a)
 	*a = (*a)->next;
 	tmp->next = (*a)->next;
 	(*a)->next = tmp;	
+}
+
+void	sa(t_node **a)
+{
+	swap(a);
+	ft_printf("sa\n");
+}
+
+void	sb(t_node **b)
+{
+	swap(b);
+	ft_printf("sb\n");
+}
+
+void	ss(t_node **a, t_node **b)
+{
+	swap(a);
+	swap(b);
+	ft_printf("ss\n");
 }

@@ -6,7 +6,7 @@
 /*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 14:59:05 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/06/14 14:03:38 by jopfeiff         ###   ########.fr       */
+/*   Updated: 2024/06/14 14:31:34 by jopfeiff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,8 @@ int	ft_reapeat(t_node *head, int nbr);
 int	check_nbr(long nbr);
 t_node	*find_last(t_node *node);
 void	sa(t_node **a);
+void	sb(t_node **b);
+void	ss(t_node **a, t_node **b);
+void	pb(t_node **a, t_node **b);
 
 #endif

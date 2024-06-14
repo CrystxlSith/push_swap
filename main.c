@@ -6,7 +6,7 @@
 /*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 18:50:00 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/06/14 13:59:36 by jopfeiff         ###   ########.fr       */
+/*   Updated: 2024/06/14 14:34:32 by jopfeiff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,13 @@ int main(int argc, char *argv[])
 	print_list(a);
 	sa(&a);
 	print_list(a);
+	sb(&b);
+	print_list(a);
+	ss(&a, &b);
+	print_list(a);
+	pb(&a, &b);
+	print_list(a);
+	print_list(b);
 	free_prog(b, argv, flag, 0);
 	return 0;
 }
