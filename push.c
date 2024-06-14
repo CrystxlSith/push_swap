@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
+/*   By: crystal <crystal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 14:21:20 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/06/14 14:59:37 by jopfeiff         ###   ########.fr       */
+/*   Updated: 2024/06/14 22:59:30 by crystal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 // 	ft_printf("pb\n");
 // }
 
-void pb(t_node **dest, t_node **src)
+static void	push(t_node **dest, t_node **src)
 {
  	t_node	*node_to_push;
 
@@ -53,6 +53,16 @@ void pb(t_node **dest, t_node **src)
 		node_to_push->next->prev = node_to_push;
 		*dest = node_to_push;
 	}
-	ft_printf("pb\n");
 }
 
+void	pa(t_node **a, t_node **b)
+{
+	push(a, b);
+	ft_printf("pa\n");
+}
+
+void	pb(t_node **a, t_node **b)
+{
+	push(b, a);
+	ft_printf("pb\n");
+}
