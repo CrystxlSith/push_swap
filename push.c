@@ -6,7 +6,7 @@
 /*   By: crystal <crystal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 14:21:20 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/06/14 22:59:30 by crystal          ###   ########.fr       */
+/*   Updated: 2024/06/16 19:29:19 by crystal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,25 +33,25 @@
 
 static void	push(t_node **dest, t_node **src)
 {
- 	t_node	*node_to_push;
+	t_node	*new_node;
 
-	if (NULL == *src)
+	if (!*src)
 		return ;
-	node_to_push = *src;
+	new_node = *src;
 	*src = (*src)->next;
 	if (*src)
 		(*src)->prev = NULL;
-	node_to_push->prev = NULL;
-	if (NULL == *dest)
+	new_node->prev = NULL;
+	if (!*dest)
 	{
-		*dest = node_to_push;
-		node_to_push->next = NULL;
+		*dest = new_node;
+		new_node->next = NULL;
 	}
 	else
 	{
-		node_to_push->next = *dest;
-		node_to_push->next->prev = node_to_push;
-		*dest = node_to_push;
+		new_node->next = *dest;
+		new_node->next->prev = NULL;
+		*dest = new_node;
 	}
 }
 
