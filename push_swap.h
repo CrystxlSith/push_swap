@@ -6,7 +6,7 @@
 /*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 14:59:05 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/06/17 15:12:55 by jopfeiff         ###   ########.fr       */
+/*   Updated: 2024/06/17 18:11:09 by jopfeiff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	free_list(t_node *head);
 long	ft_long_atoi(const char *nptr);
 int	ft_reapeat(t_node *head, int nbr);
 int	check_nbr(long nbr);
+void	sort_3(t_node **a);
 t_node	*find_last(t_node *node);
 void	rr(t_node **a, t_node **b);
 void	rra(t_node **a);
@@ -49,6 +50,6 @@ void	pb(t_node **a, t_node **b);
 void	ra(t_node **a);
 void	rb(t_node **b);
 void	pa(t_node **a, t_node **b);
-void	sort(t_node **a, t_node **b, int count);
+void	little_sort(t_node **a, t_node **b, int count);
 void	sort_2(t_node **a);
 #endif
