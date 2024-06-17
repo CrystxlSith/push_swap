@@ -3,10 +3,48 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: crystal <crystal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 19:32:53 by crystal           #+#    #+#             */
-/*   Updated: 2024/06/16 19:32:54 by crystal          ###   ########.fr       */
+/*   Updated: 2024/06/17 11:56:05 by jopfeiff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "push_swap.h"
+
+static void	rotate(t_node **ab)
+{
+	if (!*ab || !(*ab)->next)
+		return ;
+	t_node	*last;
+	t_node	*tmp;
+
+	last = *ab;
+	tmp = NULL;
+	while (last->next)
+		last = last->next;
+	tmp = last->prev;
+	tmp->next = NULL;
+	last->next = *ab;
+	*ab = last;
+}
+
+void	ra(t_node **a)
+{
+	rotate(a);
+	ft_printf("ra\n");	
+}
+
+
+void	rb(t_node **b)
+{
+	rotate(b);	
+	ft_printf("rb\n");
+}
+
+void	rr(t_node **a, t_node **b)
+{
+	rotate(a);
+	rotate(b);
+	ft_printf("rr\n");
+}

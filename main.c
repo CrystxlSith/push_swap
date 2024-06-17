@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: crystal <crystal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 18:50:00 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/06/14 22:55:22 by crystal          ###   ########.fr       */
+/*   Updated: 2024/06/17 10:59:18 by jopfeiff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,12 @@ int main(int argc, char *argv[])
 	pb(&a, &b);
 	print_list(a);
 	print_list(b);
-	pa(&b, &a);
+	pa(&a, &b);
 	print_list(a);
+	print_list(b);
+	ra(&a);
+	print_list(a);
+	rb(&b);	
 	print_list(b);
 	free_prog(b, argv, flag, 0);
 	return 0;

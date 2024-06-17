@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: crystal <crystal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 14:59:05 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/06/14 22:36:14 by crystal          ###   ########.fr       */
+/*   Updated: 2024/06/17 11:56:29 by jopfeiff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,12 @@ long	ft_long_atoi(const char *nptr);
 int	ft_reapeat(t_node *head, int nbr);
 int	check_nbr(long nbr);
 t_node	*find_last(t_node *node);
+void	rr(t_node **a, t_node **b);
 void	sa(t_node **a);
 void	sb(t_node **b);
 void	ss(t_node **a, t_node **b);
 void	pb(t_node **a, t_node **b);
+void	ra(t_node **a);
+void	rb(t_node **b);
 void	pa(t_node **a, t_node **b);
 #endif
