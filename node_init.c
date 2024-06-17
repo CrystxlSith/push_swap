@@ -6,7 +6,7 @@
 /*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 11:49:02 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/06/13 14:19:31 by jopfeiff         ###   ########.fr       */
+/*   Updated: 2024/06/17 14:06:24 by jopfeiff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_node	*find_last(t_node *node)
 		return (NULL);
 	while (node->next)
 		node = node->next;
-	return (node);	
+	return (node);
 }
 
 void	node_init(t_node **node, int nbr)
@@ -27,7 +27,7 @@ void	node_init(t_node **node, int nbr)
 	t_node	*last;
 
 	if (!node)
-		return;
+		return ;
 	new = malloc(sizeof(t_node));
 	if (!new)
 		return ;

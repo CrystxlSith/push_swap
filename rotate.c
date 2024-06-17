@@ -6,7 +6,7 @@
 /*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 19:32:53 by crystal           #+#    #+#             */
-/*   Updated: 2024/06/17 11:56:05 by jopfeiff         ###   ########.fr       */
+/*   Updated: 2024/06/17 14:09:13 by jopfeiff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 static void	rotate(t_node **ab)
 {
-	if (!*ab || !(*ab)->next)
-		return ;
 	t_node	*last;
 	t_node	*tmp;
 
+	if (!*ab || !(*ab)->next)
+		return ;
 	last = *ab;
 	tmp = NULL;
 	while (last->next)
@@ -32,13 +32,12 @@ static void	rotate(t_node **ab)
 void	ra(t_node **a)
 {
 	rotate(a);
-	ft_printf("ra\n");	
+	ft_printf("ra\n");
 }
-
 
 void	rb(t_node **b)
 {
-	rotate(b);	
+	rotate(b);
 	ft_printf("rb\n");
 }
 

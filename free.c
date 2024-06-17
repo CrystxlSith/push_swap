@@ -6,7 +6,7 @@
 /*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 14:36:16 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/06/14 10:54:32 by jopfeiff         ###   ########.fr       */
+/*   Updated: 2024/06/17 14:07:49 by jopfeiff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	free_list(t_node *head)
 {
 	t_node	*current;
+
 	current = head;
 	while (current != NULL)
 	{
@@ -45,6 +46,6 @@ void	free_prog(t_node *head, char **argv, int flag, int i)
 	if (i)
 	{
 		write(2, "Error\n", 6);
-		exit (1);	
+		exit (1);
 	}
 }

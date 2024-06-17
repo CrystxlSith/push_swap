@@ -6,7 +6,7 @@
 /*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 13:06:01 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/06/14 14:18:31 by jopfeiff         ###   ########.fr       */
+/*   Updated: 2024/06/17 14:07:15 by jopfeiff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 static void	swap(t_node **a)
 {
- 	t_node	*tmp;
-	
+	t_node	*tmp;
+
 	tmp = NULL;
 	if (!*a || !(*a)->next)
 		return ;
 	tmp = *a;
 	*a = (*a)->next;
 	tmp->next = (*a)->next;
-	(*a)->next = tmp;	
+	(*a)->next = tmp;
 }
 
 void	sa(t_node **a)
