@@ -6,8 +6,14 @@
 /*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 18:50:59 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/06/10 14:59:57 by jopfeiff         ###   ########.fr       */
+/*   Updated: 2024/06/17 15:12:24 by jopfeiff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	sort(t_node **a, t_node **b, int count)
+{
+	if (count == 2)
+		sort_2(a);
+}

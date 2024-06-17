@@ -6,7 +6,7 @@
 /*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 14:15:55 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/06/14 14:04:01 by jopfeiff         ###   ########.fr       */
+/*   Updated: 2024/06/17 15:00:27 by jopfeiff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	print_list(t_node *head)
 	ft_printf("NULL\n");
 }
 
-void	list_init(t_node **head, char **argv, int flag)
+int	list_init(t_node **head, char **argv, int flag)
 {
 	int		i;
 	long	nbr;
@@ -48,4 +48,7 @@ void	list_init(t_node **head, char **argv, int flag)
 			node_init(head, (int)nbr);
 		i++;
 	}
+	if (!flag)
+		i -= 1;
+	return (i);
 }

@@ -6,7 +6,7 @@
 /*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 14:36:16 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/06/17 14:07:49 by jopfeiff         ###   ########.fr       */
+/*   Updated: 2024/06/17 14:58:39 by jopfeiff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@ void	free_argv(char **argv)
 	free(argv);
 }
 
-void	free_prog(t_node *head, char **argv, int flag, int i)
+void	free_prog(t_node *a, char **argv, int flag, int i)
 {
-	if (flag)
+	if (flag && a)
 		free_argv(argv);
-	free_list(head);
+	free_list(a);
 	if (i)
 	{
 		write(2, "Error\n", 6);
