@@ -6,7 +6,7 @@
 /*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 18:50:00 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/06/17 10:59:18 by jopfeiff         ###   ########.fr       */
+/*   Updated: 2024/06/17 13:54:54 by jopfeiff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
 	t_node	*a;
 	t_node	*b;
 	int	flag;
-	
+
 	flag = 0;
 	a = NULL;
 	b = NULL;
@@ -42,10 +42,14 @@ int main(int argc, char *argv[])
 	pa(&a, &b);
 	print_list(a);
 	print_list(b);
-	ra(&a);
-	print_list(a);
+	//ra(&a);
+	//print_list(a);
 	rb(&b);	
 	print_list(b);
+	rra(&a);
+	print_list(a);
 	free_prog(b, argv, flag, 0);
+	
+	free_prog(a, argv, flag, 0);
 	return 0;
 }
