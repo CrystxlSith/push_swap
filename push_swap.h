@@ -6,7 +6,7 @@
 /*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 14:59:05 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/06/17 14:00:05 by jopfeiff         ###   ########.fr       */
+/*   Updated: 2024/06/17 14:01:50 by jopfeiff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	rr(t_node **a, t_node **b);
 void	rra(t_node **a);
 void	sa(t_node **a);
 void	rrb(t_node **b);
+void	rrr(t_node **a, t_node **b);
 void	sb(t_node **b);
 void	ss(t_node **a, t_node **b);
 void	pb(t_node **a, t_node **b);

@@ -6,7 +6,7 @@
 /*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 10:11:47 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/06/17 13:59:50 by jopfeiff         ###   ########.fr       */
+/*   Updated: 2024/06/17 14:01:35 by jopfeiff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,11 @@ void	rrb(t_node **b)
 {
 	reverse_rotate(b);
 	ft_printf("rrb\n");
+}
+
+void	rrr(t_node **a, t_node **b)
+{
+	reverse_rotate(a);
+	reverse_rotate(b);
+	ft_printf("rrr\n");
 }
