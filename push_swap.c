@@ -6,7 +6,7 @@
 /*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 18:50:59 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/06/17 18:10:59 by jopfeiff         ###   ########.fr       */
+/*   Updated: 2024/06/18 18:14:35 by jopfeiff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,6 @@ void	little_sort(t_node **a, t_node **b, int count)
 		sort_2(a);
 	if (count == 3)
 		sort_3(a);
+	if (count == 4)
+		sort_4(a, b);
 }

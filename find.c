@@ -1,48 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   find.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/14 13:06:01 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/06/18 17:59:34 by jopfeiff         ###   ########.fr       */
+/*   Created: 2024/06/18 18:08:31 by jopfeiff          #+#    #+#             */
+/*   Updated: 2024/06/18 18:18:56 by jopfeiff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	swap(t_node **a)
+int find_highest(t_node **a)
 {
-	t_node	*tmp;
+	int	high;
+	t_node *cp;
 
-	if (!*a || !(*a)->next)
-		return ;
-	tmp = *a;
-	*a = (*a)->next;
-	tmp->next = (*a)->next;
-	if ((*a)->next)
-		(*a)->next->prev = tmp;
-	(*a)->next = tmp;
-	tmp->prev = *a;
-	(*a)->prev = NULL;
+	cp = *a;
+	high = (*a)->data;
+	while (cp != NULL)
+	{
+		if (cp->data > high)
+			high = cp->data;
+		cp = cp->next;
+	}
+	return (high);
 }
 
-void	sa(t_node **a)
+int	find_lowest(t_node **a)
 {
-	swap(a);
-	ft_printf("sa\n");
-}
+	int	lowest;
+	t_node	*cp;
 
-void	sb(t_node **b)
-{
-	swap(b);
-	ft_printf("sb\n");
-}
-
-void	ss(t_node **a, t_node **b)
-{
-	swap(a);
-	swap(b);
-	ft_printf("ss\n");
+	lowest = (*a)->data;
+	cp = *a;
+	while (cp != NULL)
+	{
+		if (cp->data < lowest)
+			lowest = cp->data;
+		cp = cp->next;
+	}
+	return (lowest);
 }
