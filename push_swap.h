@@ -6,7 +6,7 @@
 /*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 14:59:05 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/06/20 17:21:50 by jopfeiff         ###   ########.fr       */
+/*   Updated: 2024/06/20 18:26:15 by jopfeiff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int	sorted(t_node **a, t_node **b);
 void	free_prog(t_node *a, char **argv, int flag, int i);
 void	sort_2(t_node **a);
 void	free_argv(char **argv);
+void	sorting(t_node **a, t_node **b, int count);
 void	free_list(t_node *head);
 long	ft_long_atoi(const char *nptr);
 int	ft_reapeat(t_node *head, int nbr);

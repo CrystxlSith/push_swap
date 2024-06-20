@@ -6,11 +6,34 @@
 /*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 14:49:05 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/06/20 18:12:46 by jopfeiff         ###   ########.fr       */
+/*   Updated: 2024/06/20 18:19:55 by jopfeiff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
+
+
+static void	last_sort_2(t_node **a, t_node **b, int lowest, int highest)
+{
+	if ((*a)->next->next->data == lowest)
+	{
+		rra(a);
+		if (!sorted(a, b))
+		{
+			pb(a, b);
+			sort_3(a);
+			pa(a, b);
+			ra(a);
+		}
+	}
+	else if ((*a)->next->next->data == highest)
+	{
+		rra(a);
+		pb(a, b);
+		sort_3(a);
+		pa(a, b);
+	}
+}
 
 static void	last_sort(t_node **a, t_node **b, int lowest, int highest)
 {
@@ -32,24 +55,8 @@ static void	last_sort(t_node **a, t_node **b, int lowest, int highest)
 		pa(a, b);
 		ra(a);
 	}
-	else if ((*a)->next->next->data == lowest)
-	{
-		rra(a);
-		if (!sorted(a, b))
-		{
-			pb(a, b);
-			sort_3(a);
-			pa(a, b);
-			ra(a);
-		}
-	}
-	else if ((*a)->next->next->data == highest)
-	{
-		rra(a);
-		pb(a, b);
-		sort_3(a);
-		pa(a, b);
-	}
+	else
+		last_sort_2(a, b, lowest, highest);
 }
 void	sort_3(t_node **a)
 {

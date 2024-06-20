@@ -6,14 +6,15 @@
 #    By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/29 15:13:11 by jopfeiff          #+#    #+#              #
-#    Updated: 2024/06/20 17:27:08 by jopfeiff         ###   ########.fr        #
+#    Updated: 2024/06/20 18:25:10 by jopfeiff         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 SRCS = free.c error_check.c push.c swap.c rotate.c reverse_rotate.c \
 	node_init.c list_init.c ft_long_atoi.c push_swap.c find.c \
-		sort/little_sort.c main.c utils/sorted.c
+		sort/little_sort.c main.c utils/sorted.c sort/sorting.c \
+			sort/big_sort.c
 CC = cc
 CFLAGS = -g3 -Wall -Wextra -Werror -I./includes/
 RM = rm -rf
