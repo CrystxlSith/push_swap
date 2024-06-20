@@ -6,11 +6,11 @@
 /*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 18:50:59 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/06/20 18:44:27 by jopfeiff         ###   ########.fr       */
+/*   Updated: 2024/06/20 18:48:41 by jopfeiff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 static void	sort_5(t_node **a, t_node **b, int count)
 {
