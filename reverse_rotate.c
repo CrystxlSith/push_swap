@@ -6,7 +6,7 @@
 /*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 10:11:47 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/06/20 11:59:57 by jopfeiff         ###   ########.fr       */
+/*   Updated: 2024/06/20 16:53:51 by jopfeiff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,20 +33,21 @@
 
 static void reverse_rotate(t_node **ab)
 {
-	t_node *first;
-	t_node *last;
+	t_node	*last;
+	t_node	*before_last;
 
-	if (!*ab || !(*ab)->next)
-		return;
-	first = *ab;
 	last = *ab;
+	before_last = NULL;
+	if (!*ab || !(*ab)->next)
+		return ;
 	while (last->next)
 		last = last->next;
-	first->next->prev = NULL;
-	*ab = first->next;
-	first->next = NULL;
-	last->next = first;
-	first->prev = last;
+	before_last = last->prev;
+	before_last->next = NULL;
+	last->prev = NULL;
+	last->next = *ab;
+	(*ab)->prev = last;
+	*ab = last;
 }
 
 

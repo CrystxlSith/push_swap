@@ -6,7 +6,7 @@
 /*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 14:15:55 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/06/17 15:00:27 by jopfeiff         ###   ########.fr       */
+/*   Updated: 2024/06/20 15:17:04 by jopfeiff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	list_init(t_node **head, char **argv, int flag)
 	nbr = 0;
 	if (!flag)
 	{	
-		if (ft_strncmp(ft_strrchr(argv[0], '/'), "/a.out", 7) == 0)
+		if (ft_strncmp(ft_strrchr(argv[0], '/'), "/push_swap", 7) == 0)
 			i++;
 	}
 	while (argv[i])
