@@ -6,28 +6,49 @@
 /*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 14:49:05 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/06/20 16:58:37 by jopfeiff         ###   ########.fr       */
+/*   Updated: 2024/06/20 18:12:46 by jopfeiff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 static void	last_sort(t_node **a, t_node **b, int lowest, int highest)
 {
 	if ((*a)->next->data == lowest)
 	{
-		rra(a);
+		sa(a);
+		if (!sorted(a, b))
+		{
+			pb(a, b);
+			sort_3(a);
+			pa(a, b);
+		}
+	}
+	else if ((*a)->next->data == highest)
+	{
+		sa(a);
 		pb(a, b);
 		sort_3(a);
 		pa(a, b);
+		ra(a);
 	}
-	else if ((*a)->next->data == highest)
+	else if ((*a)->next->next->data == lowest)
+	{
+		rra(a);
+		if (!sorted(a, b))
+		{
+			pb(a, b);
+			sort_3(a);
+			pa(a, b);
+			ra(a);
+		}
+	}
+	else if ((*a)->next->next->data == highest)
 	{
 		rra(a);
 		pb(a, b);
 		sort_3(a);
 		pa(a, b);
-		rra(a);
 	}
 }
 void	sort_3(t_node **a)
@@ -67,21 +88,25 @@ void	sort_4(t_node **a, t_node **b)
 
 	highest = find_highest(a);
 	lowest = find_lowest(a);
-	if ((*a)->data == highest)
+	if (!sorted(a, b))
 	{
-		pb(a, b);
-		sort_3(a);
-		pa(a, b);
-		rra(a);
+		if ((*a)->data == highest)
+		{
+			pb(a, b);
+			sort_3(a);
+			pa(a, b);
+			ra(a);
+		}
+		else if ((*a)->data == lowest)
+		{
+			pb(a, b);
+			sort_3(a);
+			pa(a, b);
+		}
+		else
+			last_sort(a, b, lowest, highest);
+		
 	}
-	else if ((*a)->data == lowest)
-	{
-		pb(a, b);
-		sort_3(a);
-		pa(a, b);
-	}
-	else
-		last_sort(a, b, lowest, highest);
 }	
 
 void	sort_2(t_node **a)
