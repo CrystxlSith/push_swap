@@ -6,7 +6,7 @@
 /*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 19:32:53 by crystal           #+#    #+#             */
-/*   Updated: 2024/06/17 14:09:13 by jopfeiff         ###   ########.fr       */
+/*   Updated: 2024/06/20 11:58:28 by jopfeiff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,15 @@ static void	rotate(t_node **ab)
 	t_node	*tmp;
 
 	if (!*ab || !(*ab)->next)
-		return ;
+		return;
 	last = *ab;
-	tmp = NULL;
 	while (last->next)
 		last = last->next;
 	tmp = last->prev;
 	tmp->next = NULL;
+	last->prev = NULL;
 	last->next = *ab;
+	(*ab)->prev = last;
 	*ab = last;
 }
 
