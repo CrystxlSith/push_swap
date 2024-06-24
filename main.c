@@ -6,7 +6,7 @@
 /*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 18:50:00 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/06/24 08:24:07 by jopfeiff         ###   ########.fr       */
+/*   Updated: 2024/06/24 08:59:52 by jopfeiff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ int main(int argc, char *argv[])
 		flag = 1;
 	}
 	count = list_init(&a, argv, flag);
+	
 	//ft_printf("%d\n", count);
 	//print_list(a);
-	printf("%d\n", a->index);
 	// if (!sorted(&a, &b))
 	// {
 	// 	sorting(&a, &b, count);
