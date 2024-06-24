@@ -6,11 +6,19 @@
 /*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 11:49:02 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/06/20 15:35:13 by jopfeiff         ###   ########.fr       */
+/*   Updated: 2024/06/24 08:30:33 by jopfeiff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static void	init_params(t_node **new)
+{
+	(*new)->index = 0;
+	(*new)->highest = 0;
+	(*new)->lowest = 0;
+	(*new)->median = 0;
+}
 
 t_node	*find_last(t_node *node)
 {
@@ -44,4 +52,5 @@ void	node_init(t_node **node, int nbr)
 		last->next = new;
 		new->prev = last;
 	}
+	init_params(node);
 }

@@ -6,7 +6,7 @@
 /*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 14:15:55 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/06/20 15:17:04 by jopfeiff         ###   ########.fr       */
+/*   Updated: 2024/06/24 08:31:02 by jopfeiff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int	list_init(t_node **head, char **argv, int flag)
 			free_prog(*head, argv, flag, 1);
 		else
 			node_init(head, (int)nbr);
+		(*head)->index = i;
 		i++;
 	}
 	if (!flag)
