@@ -6,52 +6,120 @@
 /*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 18:23:38 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/06/24 13:08:23 by jopfeiff         ###   ########.fr       */
+/*   Updated: 2024/06/24 15:21:59 by jopfeiff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void    updt_lowest(t_node **a)
+// static t_node	*find_high(t_node **a)
+// {
+// 	t_node	*tmp;
+
+// 	tmp = *a;
+// 	while (tmp->next)
+// 	{
+// 		if (tmp->data == tmp->highest)
+// 			break;
+// 		tmp = tmp->next;
+// 	}
+// 	return (tmp);
+// }
+
+static t_node	*find_low(t_node **a)
 {
-    t_node *tmp;
-    tmp = *a;
-    while (tmp)
-    {
-        tmp->lowest = find_lowest(&tmp);
-        tmp = tmp->next;
-    }
+	t_node	*tmp;
+
+	tmp = *a;
+	while (tmp->next)
+	{
+		if (tmp->data == tmp->lowest)
+			break;
+		tmp = tmp->next;
+	}
+	return (tmp);
+}
+
+static void	updt_list(t_node **a)
+{
+	int	i;
+	t_node *tmp;
+	
+	i = 0;
+	tmp = *a;
+	while (tmp)
+	{
+		tmp->lowest = find_lowest(&tmp);
+		tmp->highest = find_highest(&tmp);
+		tmp->index = i; 
+		tmp = tmp->next;
+		i++;
+	}
 }
 
 void	big_sort(t_node **a, t_node **b)
 {
-	t_node *line;
+	int	i;
+	t_node	*tmp;
+
+	tmp = NULL;
+	i = 0;
 	if (!a || !*a) // Vérifier si la liste est vide
 		return;
-	line = NULL;
 	if (!sorted(a, b)) // Vérifier si la liste est triée
 	{
 		while (*a)
 		{
-			// while ((*a)->data != (*a)->lowest) // Si le premier élément de la liste est le plus petit
+			// while (i != 1)
 			// {
-			// 	ra(a); // On fait une rotation
+			// 	pb(a, b);
+			// 	pb(a, b);
+			// 	i++;
 			// }
-			ra(a);
-			if ((*a)->data <= (*a)->median)
+			// if ((*a)->data < (*a)->next->data)
+			// 	sa(a);
+			// if ((*b)->data > (*b)->next->data)
+			// 	sb(b);
+			// pb(a, b);
+			// pb(a, b);
+			updt_list(a);
+			i = (*a)->lowest;
+			tmp = find_low(a);
+			if (tmp->index > (*a)->median)
 			{
-				pb(a, b);
+				while ((*a)->data != i)
+				{
+					ft_printf("tmp->index = %d\n", tmp->index);
+					if ((*a)->next == NULL)
+					{
+						pb(a, b);
+						break;
+					}
+					rb(a);
+				}
 			}
-			//if ((*a)->data == (*a)->lowest) // Si le premier élément de la liste est le plus petit
-				//pb(a, b); // On push le premier élément de la liste dans la liste b
-			//updt_lowest(a); // On met à jour le plus petit élément de la liste a
-			if (sorted(a, b)) // Si la liste a est triée
-				break;
+			else
+			{
+				while ((*a)->data != i)
+				{
+					ft_printf("tmp->index else = %d\n", tmp->index);
+					//ft_printf("tmp->median = %d\n", tmp->median);
+					if ((*a)->next == NULL)
+					{
+						pb(a, b);
+						break;
+					}
+					ra(a);
+				}
+			}
+			pb(a, b);
+			// while (*a)
+			// {
+			// 	pb(a, b);
+			// }
 		}
-		while (*b) // Tant que la liste b n'est pas vide
-		{
-			pa(a, b); // On push le premier élément de la liste b dans la liste a
-		}
-	
+		
+		//if (sorted(a, b)) // Si la liste a est triée
+			//break;
    	 }
 }
