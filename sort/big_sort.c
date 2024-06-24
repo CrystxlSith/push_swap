@@ -6,13 +6,13 @@
 /*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 18:23:38 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/06/20 19:18:57 by jopfeiff         ###   ########.fr       */
+/*   Updated: 2024/06/24 07:57:22 by jopfeiff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	big_sort(t_node **a, t_node **b)
+void	big_sort(t_node **a, t_node **b , int count)
 {
     t_node *line;
 
@@ -20,33 +20,9 @@ void	big_sort(t_node **a, t_node **b)
         return;
     
     line = *a;
-
-    while (!sorted(a, b))
+    while (line)
     {
-        if (!line->next) // Si nous atteignons la fin de la liste, recommencer depuis le début
-        {
-            line = *a;
-            continue;
-        }
-
-        if (line->data > line->next->data)
-        {
-            sa(a); // Échanger les éléments
-        }
-        ra(a); // Effectuer une rotation
-        line = *a; // Réinitialiser line après chaque rotation
+        /* code */
     }
-	// t_node *line;
-	
-	// line = *a;
-	// while (!sorted(a, b))
-	// {
-	// 	if (line->data > line->next->data)
-	// 		ra(a);
-	// 	else
-	// 	{
-	// 		sa(a);
-	// 		ra(a);		
-	// 	}
-	// }	
+    
 }
