@@ -6,7 +6,7 @@
 /*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 18:23:38 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/06/25 14:21:33 by jopfeiff         ###   ########.fr       */
+/*   Updated: 2024/06/25 16:22:39 by jopfeiff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static int	is_low(t_node **a)
 	tmp = *a;
 	while (tmp)
 	{
-		if (tmp->data < tmp->median)
+		if (tmp->data < tmp->median / 2)
 			return (1);
 		tmp = tmp->next;
 	}
@@ -71,7 +71,7 @@ static int	is_low(t_node **a)
 // }
 
 
-static void	updt_list(t_node **a)
+static void	updt_list(t_node **a, int k)
 {
 	t_node *tmp;
 	t_node *tmp2;
@@ -93,7 +93,7 @@ static void	updt_list(t_node **a)
 		tmp->highest = find_highest(&tmp);
 		tmp->index = i; 
 		tmp->total = j;
-		tmp->median = tmp->highest / 2;
+		tmp->median = tmp->highest / k;
 		tmp = tmp->next;
 		i++;
 	}
@@ -154,9 +154,17 @@ static t_node	*find_high(t_node **list)
 
 static void	to_b(t_node **a, t_node **b)
 {
+	int	i;
+
+	i = 2;
 	while (is_low(a))
 	{
-		updt_list(a);
+		updt_list(a, i);
+		if ((*a)->data < (*a)->median / 2 && (*a)->data > (*a)->median)
+		{
+			pb(a, b);
+			rb(b);
+		}
 		if ((*a)->data < (*a)->median)
 			pb(a, b);
 		else
@@ -164,7 +172,7 @@ static void	to_b(t_node **a, t_node **b)
 	}
 	while (!is_low(a))
 	{
-		updt_list(a);
+		updt_list(a, 2);
 		if ((*a)->data == (*a)->highest)
 			ra(a);
 		if ((*a)->next == NULL)
@@ -176,6 +184,48 @@ static void	to_b(t_node **a, t_node **b)
 	}
 }
 
+// static void to_b(t_node **a, t_node **b) {
+//     int segment_size = 2;
+
+//     while (is_low(a)) {
+//         updt_list(a, segment_size);
+//         if ((*a)->data < (*a)->median) {
+//             pb(a, b);
+//         } else {
+//             ra(a);
+//         }
+//     }
+
+//     while (!is_low(a)) {
+//         updt_list(a, segment_size);
+//         if ((*a)->data == (*a)->highest) {
+//             ra(a);
+//         }
+//         if ((*a)->next == NULL) {
+//             break;
+//         }
+//         if ((*a)->data > (*a)->median) {
+//             pb(a, b);
+//         } else {
+//             ra(a);
+//         }
+//     }
+
+//     while (segment_size > 0) {
+//         t_node *current = *a;
+//         while (current != NULL) {
+//             updt_list(a, segment_size);
+//             if (current->data < (*a)->median) {
+//                 pb(a, b);
+//             } else {
+//                 ra(a);
+//             }
+//             current = *a;
+//         }
+//         segment_size /= 2;
+//     }
+// }
+
 static void	to_a(t_node **a, t_node **b)
 {
 	t_node *tmp;
@@ -183,7 +233,7 @@ static void	to_a(t_node **a, t_node **b)
 	tmp = NULL;
 	while (*b)
 	{
-		updt_list(b);
+		updt_list(b, 2);
 		tmp = find_high(b);
 		if (tmp->index > tmp->total / 2)
 		{

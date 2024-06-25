@@ -6,7 +6,7 @@
 /*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 14:21:20 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/06/25 14:21:02 by jopfeiff         ###   ########.fr       */
+/*   Updated: 2024/06/25 15:39:16 by jopfeiff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,16 +55,18 @@
 // 	}
 // }
 
-void push(t_node **a, t_node **b)
+static void push(t_node **a, t_node **b)
 {
 	t_node *node;
 	if (!*b)
 		return;
 	node = *b;
 	*b = (*b)->next;
-	if (*b) (*b)->prev = NULL;
+	if (*b)
+		(*b)->prev = NULL;
 	node->next = *a;
-	if (*a) (*a)->prev = node;
+	if (*a)
+		(*a)->prev = node;
 	*a = node;
 	node->prev = NULL;
 }
