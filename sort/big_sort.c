@@ -6,53 +6,85 @@
 /*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 18:23:38 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/06/25 08:40:19 by jopfeiff         ###   ########.fr       */
+/*   Updated: 2024/06/25 14:21:33 by jopfeiff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-// static t_node	*find_high(t_node **a)
+
+// static	int	b_size(t_node **b)
+// {
+// 	t_node	*tmp;
+// 	int		i;
+
+// 	i = 0;
+// 	tmp = *b;
+// 	while (tmp)
+// 	{
+// 		tmp = tmp->next;
+// 		i++;
+// 	}
+// 	return (i);
+// }
+
+// static t_node	*find_lowest_list(t_node **a)
 // {
 // 	t_node	*tmp;
 
 // 	tmp = *a;
 // 	while (tmp->next)
 // 	{
-// 		if (tmp->data == tmp->highest)
+// 		if (tmp->data == tmp->lowest)
 // 			break;
 // 		tmp = tmp->next;
 // 	}
 // 	return (tmp);
 // }
 
-static t_node	*find_low(t_node **a)
+static int	is_low(t_node **a)
 {
 	t_node	*tmp;
 
 	tmp = *a;
-	while (tmp->next)
+	while (tmp)
 	{
-		if (tmp->data == tmp->lowest)
-			break;
+		if (tmp->data < tmp->median)
+			return (1);
 		tmp = tmp->next;
 	}
-	return (tmp);
+	return (0);
 }
+
+// static t_node	*find_low(t_node **a)
+// {
+// 	t_node	*tmp;
+
+// 	tmp = *a;
+// 	while (tmp->next)
+// 	{
+// 		if (tmp->data < tmp->median)
+// 			break;
+// 		tmp = tmp->next;
+// 	}
+// 	return (tmp);
+// }
+
 
 static void	updt_list(t_node **a)
 {
+	t_node *tmp;
+	t_node *tmp2;
 	int	i;
 	int	j;
-	t_node *tmp;
 	
 	j = 0;
 	i = 0;
-	tmp = *a;
-	while (tmp)
+	tmp2 = *a;
+	while (tmp2)
 	{
-		tmp = tmp->next;	
 		j++;
+		tmp2 = tmp2->next;	
 	}
 	tmp = *a;
 	while (tmp)
@@ -61,54 +93,124 @@ static void	updt_list(t_node **a)
 		tmp->highest = find_highest(&tmp);
 		tmp->index = i; 
 		tmp->total = j;
-		tmp->median = (tmp->highest - tmp->lowest) / 2;
+		tmp->median = tmp->highest / 2;
 		tmp = tmp->next;
 		i++;
 	}
 }
 
-void	big_sort(t_node **a, t_node **b)
+static t_node	*find_high(t_node **list)
 {
 	t_node	*tmp;
 
+	tmp = *list;
+	while (tmp->next)
+	{
+		if (tmp->data == tmp->highest)
+			break;
+		tmp = tmp->next;
+	}
+	return (tmp);
+}
+// static void	sort_bef_med(t_node **a, t_node **b)
+// {
+// 	t_node	*tmp;
+// 	int		i;
+
+// 	i = 0;
+// 	tmp = NULL;
+// 	while (!sorted(b, NULL))
+// 	{
+// 		updt_list(b);
+// 		tmp = find_low(b);
+// 		if (tmp->index > tmp->total / 2)
+// 		{
+// 			while ((*b) != tmp)
+// 			{
+// 				if ((*b)->next == NULL)
+// 				{
+// 					pa(a, b);
+// 					break;
+// 				}
+// 				rrb(a);
+// 			}
+// 		}
+// 		else
+// 		{
+// 			while ((*a) != tmp)
+// 			{
+// 				if ((*a)->next == NULL)
+// 				{
+// 					pa(a, b);
+// 					break;
+// 				}
+// 				rb(a);
+// 			}
+// 		}
+// 		pb(a, b);
+// 	}
+
+// }
+
+static void	to_b(t_node **a, t_node **b)
+{
+	while (is_low(a))
+	{
+		updt_list(a);
+		if ((*a)->data < (*a)->median)
+			pb(a, b);
+		else
+			ra(a);
+	}
+	while (!is_low(a))
+	{
+		updt_list(a);
+		if ((*a)->data == (*a)->highest)
+			ra(a);
+		if ((*a)->next == NULL)
+			break ;
+		if((*a)->data > (*a)->median)
+			pb(a, b);
+		else
+			ra(a);
+	}
+}
+
+static void	to_a(t_node **a, t_node **b)
+{
+	t_node *tmp;
+
 	tmp = NULL;
+	while (*b)
+	{
+		updt_list(b);
+		tmp = find_high(b);
+		if (tmp->index > tmp->total / 2)
+		{
+			while ((*b) != tmp)
+				rrb(b);
+		}
+		else
+		{
+			while ((*b) != tmp)
+				rb(b);
+		}
+		pa(a, b);
+	}
+}
+
+void	big_sort(t_node **a, t_node **b)
+{
+	//t_node	*tmp;
+	int		i;
+	
+	i = 10;
+	//tmp = NULL;
 	if (!a || !*a)
 		return;
 	if (!sorted(a, b))
 	{
-		while (*a)
-		{
-			updt_list(a);
-			tmp = find_low(a);
-			if (tmp->index > tmp->total / 2)
-			{
-				while ((*a) != tmp)
-				{
-					if ((*a)->next == NULL)
-					{
-						pb(a, b);
-						break;
-					}
-					rra(a);
-				}
-			}
-			else
-			{
-				while ((*a) != tmp)
-				{
-					if ((*a)->next == NULL)
-					{
-						pb(a, b);
-						break;
-					}
-					ra(a);
-				}
-			}
-			pb(a, b);
-		}
-		while (*b)
-		{
-			pa(a, b);
-		}
-   	 }
+		to_b(a, b);
+		to_a(a, b);
+ 	}
 }
