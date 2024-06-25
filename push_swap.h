@@ -6,7 +6,7 @@
 /*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 14:59:05 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/06/24 13:58:03 by jopfeiff         ###   ########.fr       */
+/*   Updated: 2024/06/25 08:33:55 by jopfeiff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef   struct s_node
 	int	highest;
 	int	lowest;
 	int	median;
+	int	total;
 	int	index;
 	struct s_node *next;
 	struct s_node *prev;
