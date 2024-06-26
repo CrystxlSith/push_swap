@@ -6,7 +6,7 @@
 /*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 18:23:38 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/06/25 16:22:39 by jopfeiff         ###   ########.fr       */
+/*   Updated: 2024/06/26 07:30:35 by jopfeiff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,19 @@
 // 	return (i);
 // }
 
+// static t_node	*find_low(t_node **a)
+// {
+// 	t_node	*tmp;
+
+// 	tmp = *a;
+// 	while (tmp->next)
+// 	{
+// 		if (tmp->data < tmp->median)
+// 			break;
+// 		tmp = tmp->next;
+// 	}
+// 	return (tmp);
+// }
 // static t_node	*find_lowest_list(t_node **a)
 // {
 // 	t_node	*tmp;
@@ -42,76 +55,6 @@
 // 	return (tmp);
 // }
 
-static int	is_low(t_node **a)
-{
-	t_node	*tmp;
-
-	tmp = *a;
-	while (tmp)
-	{
-		if (tmp->data < tmp->median / 2)
-			return (1);
-		tmp = tmp->next;
-	}
-	return (0);
-}
-
-// static t_node	*find_low(t_node **a)
-// {
-// 	t_node	*tmp;
-
-// 	tmp = *a;
-// 	while (tmp->next)
-// 	{
-// 		if (tmp->data < tmp->median)
-// 			break;
-// 		tmp = tmp->next;
-// 	}
-// 	return (tmp);
-// }
-
-
-static void	updt_list(t_node **a, int k)
-{
-	t_node *tmp;
-	t_node *tmp2;
-	int	i;
-	int	j;
-	
-	j = 0;
-	i = 0;
-	tmp2 = *a;
-	while (tmp2)
-	{
-		j++;
-		tmp2 = tmp2->next;	
-	}
-	tmp = *a;
-	while (tmp)
-	{
-		tmp->lowest = find_lowest(&tmp);
-		tmp->highest = find_highest(&tmp);
-		tmp->index = i; 
-		tmp->total = j;
-		tmp->median = tmp->highest / k;
-		tmp = tmp->next;
-		i++;
-	}
-}
-
-static t_node	*find_high(t_node **list)
-{
-	t_node	*tmp;
-
-	tmp = *list;
-	while (tmp->next)
-	{
-		if (tmp->data == tmp->highest)
-			break;
-		tmp = tmp->next;
-	}
-	return (tmp);
-}
 // static void	sort_bef_med(t_node **a, t_node **b)
 // {
 // 	t_node	*tmp;
@@ -149,40 +92,6 @@ static t_node	*find_high(t_node **list)
 // 		}
 // 		pb(a, b);
 // 	}
-
-// }
-
-static void	to_b(t_node **a, t_node **b)
-{
-	int	i;
-
-	i = 2;
-	while (is_low(a))
-	{
-		updt_list(a, i);
-		if ((*a)->data < (*a)->median / 2 && (*a)->data > (*a)->median)
-		{
-			pb(a, b);
-			rb(b);
-		}
-		if ((*a)->data < (*a)->median)
-			pb(a, b);
-		else
-			ra(a);
-	}
-	while (!is_low(a))
-	{
-		updt_list(a, 2);
-		if ((*a)->data == (*a)->highest)
-			ra(a);
-		if ((*a)->next == NULL)
-			break ;
-		if((*a)->data > (*a)->median)
-			pb(a, b);
-		else
-			ra(a);
-	}
-}
 
 // static void to_b(t_node **a, t_node **b) {
 //     int segment_size = 2;
@@ -225,6 +134,93 @@ static void	to_b(t_node **a, t_node **b)
 //         segment_size /= 2;
 //     }
 // }
+// }
+static int	is_low(t_node **a)
+{
+	t_node	*tmp;
+
+	tmp = *a;
+	while (tmp)
+	{
+		if (tmp->data < tmp->median / 2)
+			return (1);
+		tmp = tmp->next;
+	}
+	return (0);
+}
+
+static void	updt_list(t_node **a, int k)
+{
+	t_node *tmp;
+	t_node *tmp2;
+	int	i;
+	int	j;
+	
+	j = 0;
+	i = 0;
+	tmp2 = *a;
+	while (tmp2)
+	{
+		j++;
+		tmp2 = tmp2->next;	
+	}
+	tmp = *a;
+	while (tmp)
+	{
+		tmp->lowest = find_lowest(&tmp);
+		tmp->highest = find_highest(&tmp);
+		tmp->index = i; 
+		tmp->total = j;
+		tmp->median = tmp->highest / k;
+		tmp = tmp->next;
+		i++;
+	}
+}
+
+static t_node	*find_high(t_node **list)
+{
+	t_node	*tmp;
+
+	tmp = *list;
+	while (tmp->next)
+	{
+		if (tmp->data == tmp->highest)
+			break;
+		tmp = tmp->next;
+	}
+	return (tmp);
+}
+
+static void to_b(t_node **a, t_node **b) {
+	int segment_size = 2;
+	while (is_low(a)) {
+		updt_list(a, segment_size);
+		if ((*a)->data < (*a)->median / 2 && (*a)->data > (*a)->median) {
+			pb(a, b);
+			rb(b);
+		}
+		if ((*a)->data < (*a)->median) {
+			pb(a, b);
+		} else {
+			ra(a);
+		}
+	}
+	while (!is_low(a)) {
+		updt_list(a, 2);
+		if ((*a)->data == (*a)->highest) {
+			ra(a);
+		}
+		if ((*a)->next == NULL) {
+			break;
+		}
+		if ((*a)->data > (*a)->median) {
+			pb(a, b);
+		} else {
+			ra(a);
+		}
+	}
+}
+
 
 static void	to_a(t_node **a, t_node **b)
 {
@@ -251,11 +247,6 @@ static void	to_a(t_node **a, t_node **b)
 
 void	big_sort(t_node **a, t_node **b)
 {
-	//t_node	*tmp;
-	int		i;
-	
-	i = 10;
-	//tmp = NULL;
 	if (!a || !*a)
 		return;
 	if (!sorted(a, b))
