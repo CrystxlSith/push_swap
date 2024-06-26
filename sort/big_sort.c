@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   big_sort.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
+/*   By: crystal <crystal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 18:23:38 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/06/26 14:10:16 by jopfeiff         ###   ########.fr       */
+/*   Updated: 2024/06/26 17:06:45 by crystal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,19 +28,15 @@ static	int	get_size(t_node **b)
 	return (i);
 }
 
-// static t_node	*find_low(t_node **a)
-// {
-// 	t_node	*tmp;
+static int	find_low(t_node **a)
+{
+	t_node	*tmp;
 
-// 	tmp = *a;
-// 	while (tmp->next)
-// 	{
-// 		if (tmp->data < tmp->median)
-// 			break;
-// 		tmp = tmp->next;
-// 	}
-// 	return (tmp);
-// }
+	tmp = *a;
+	if (tmp->data < tmp->median)
+		return (1);
+	return (0);
+}
 // static t_node	*find_lowest_list(t_node **a)
 // {
 // 	t_node	*tmp;
@@ -340,18 +336,6 @@ static void	updt_list(t_node **a, int k)
 // 		//quick_sort(a, b);
 // 	}
 // }
-t_node *find_min(t_node *a) {
-    t_node *min_node = a;
-    while (a)
-	{
-        if (a->data < min_node->data)
-		{
-            min_node = a;
-        }
-        a = a->next;
-    }
-    return min_node;
-}
 
 // Fonction pour mettre à jour les indices
 // void update_indices(t_node **a)
@@ -365,70 +349,132 @@ t_node *find_min(t_node *a) {
 //     }
 // }
 
-static int	is_quarter(t_node **a, int quarter, int i)
-{
-	t_node	*tmp;
+// static int	is_quarter(t_node **a, int quarter, int i)
+// {
+// 	t_node	*tmp;
 
-	tmp = *a;
-	while (tmp)
-	{
-		if (tmp->data < quarter * i)
-			return (1);
-		tmp = tmp->next;
-	}
-	return (0);
-}
+// 	tmp = *a;
+// 	while (tmp)
+// 	{
+// 		if (tmp->data < quarter * i)
+// 			return (1);
+// 		tmp = tmp->next;
+// 	}
+// 	return (0);
+// }
+
+// Fonction de tri pour "push_swap"
+// void push_swap_sort(t_node **a, t_node **b)
+// {
+// 	int size = get_size(a);
+// 	int i = 1;
+// 	updt_list(a, 2);
+// 	int	quarter = (*a)->total / 4;
+// 	ft_printf("quarter =%d\n", quarter);
+// 	ft_printf("total =%d\n", (*a)->total);
+// 	// while (i < 5 && size > 3)
+// 	// {
+// 	// 	while (is_quarter(a, quarter, i) == 1)
+// 	// 	{
+// 	// 		size = get_size(a);
+// 	// 		quarter = (*a)->total / 4;
+// 	// 		if ((*a)->data < quarter * i)
+// 	// 		{
+// 	// 			pb(a, b);
+// 	// 		}
+// 	// 		else
+// 	// 		{
+// 	// 			ra(a);
+// 	// 		}
+// 	// 	}
+// 	// 	size--;
+// 	// 	i++;
+// 	// }
+//  	while (size > 3) {
+//         i = 1;
+//         while (i <= 4 && size > 3) {
+//             updt_list(a, 2); // Assurez-vous que cette fonction met correctement à jour 'total' et autres membres
+//             int quarter = (*a)->total / 4;
+//             while (is_quarter(a, quarter, i)) {
+//                 if ((*a)->data < quarter * i) {
+//                     pb(a, b);
+//                     size = get_size(a); // Recalculez la taille après les opérations
+//                 } else {
+//                     ra(a);
+//                 }
+//             }
+//             i++;
+//         }
+// 	}
+
+// 	// Tri les 3 éléments restants dans la pile a
+// 	if (!sorted(a, b))
+// 	{
+// 		sort_3(a);
+// 	}
+
+// 	// Renvoyer les éléments de b vers a
+// 	while (*b)
+// 	{
+// 		pa(a, b);
+// 	}
+// }
+
+// void update_indices(t_node **a)
+// {
+// 	t_node *tmp = *a;
+// 	int index = 0;
+// 	while (tmp)
+// 	{
+// 		tmp->index = index++;
+// 		tmp = tmp->next;
+// 	}
+// }
 
 // Fonction de tri pour "push_swap"
 void push_swap_sort(t_node **a, t_node **b)
 {
-	int size = get_size(a);
-	int i = 1;
-	updt_list(a, 2);
-	int	quarter = (*a)->total / 4;
-	ft_printf("quarter =%d\n", quarter);
-	ft_printf("total =%d\n", (*a)->total);
-	// while (i < 5 && size > 3)
-	// {
-	// 	while (is_quarter(a, quarter, i) == 1)
-	// 	{
-	// 		size = get_size(a);
-	// 		quarter = (*a)->total / 4;
-	// 		if ((*a)->data < quarter * i)
-	// 		{
-	// 			pb(a, b);
-	// 		}
-	// 		else
-	// 		{
-	// 			ra(a);
-	// 		}
-	// 	}
-	// 	size--;
-	// 	i++;
-	// }
- 	while (size > 3) {
-        i = 1;
-        while (i <= 4 && size > 3) {
-            updt_list(a, 2); // Assurez-vous que cette fonction met correctement à jour 'total' et autres membres
-            int quarter = (*a)->total / 4;
-            while (is_quarter(a, quarter, i)) {
-                if ((*a)->data < quarter * i) {
-                    pb(a, b);
-                    size = get_size(a); // Recalculez la taille après les opérations
-                } else {
-                    ra(a);
-                }
-            }
-            i++;
-        }
-	}
+	int 	size;
+	int	min_node;
 
-	// Tri les 3 éléments restants dans la pile a
-	if (!sorted(a, b))
+	min_node = get_size(a);
+	while (size > 3)
 	{
-		sort_3(a);
+		updt_list(a, 2);
+		min_node = find_low(a);
+		if (min_node == 1)
+		{
+			pb(a, b);
+		}
+		// if (min_node == 0)
+		// {
+		// 	pb(a, b);
+		// 	rb(a);
+		// }
+		else
+		{
+			ra(a);
+		}
+		size--;
 	}
-
+	// Tri les 3 éléments restants dans la pile a
+	// if (!sorted(a, b))
+	// {
+	// 	if ((*a)->data > (*a)->next->data)
+	// 	{
+	// 		ra(a);
+	// 	}
+	// 	if ((*a)->data > (*a)->next->next->data)
+	// 	{
+	// 		rra(a);
+	// 	}
+	// 	if ((*a)->next->data > (*a)->next->next->data)
+	// 	{
+	// 		ra(a);
+	// 		sa(a);
+	// 		rra(a);
+	// 	}
+	// }
 	// Renvoyer les éléments de b vers a
 	while (*b)
 	{
@@ -436,27 +482,6 @@ void push_swap_sort(t_node **a, t_node **b)
 	}
 }
 
-	// i = 10;
-	// while (i != 1) 
-	// {
-	// 	while (is_high(a, i)) {
-	// 		updt_list(a, i);
-	// 		if ((*a)->data > (*a)->med_plus / i)
-	// 		{
-	// 			pb(a, b);
-	// 			rb(b);
-	// 		}
-	// 		if ((*a)->data > (*a)->med_plus)
-	// 		{
-	// 			pb(a, b);
-	// 		}
-	// 		else 
-	// 		{
-	// 			ra(a);
-	// 		}
-	// 	}
-	// 	i--;
-	// }
 void	big_sort(t_node **a, t_node **b)
 {
 	if (!a || !*a)
