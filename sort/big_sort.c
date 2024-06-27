@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   big_sort.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: crystal <crystal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 18:23:38 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/06/26 21:28:35 by crystal          ###   ########.fr       */
+/*   Updated: 2024/06/27 09:50:13 by jopfeiff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,6 +179,32 @@ static int	rest(t_node **a, int quart)
 	}
 	return (0);
 }
+static void	check_sizes(t_node **a, t_node **b)
+{
+	if (!b || !*b)
+		return;
+	if (!a|| !*a)
+		return;
+	updt_list(b);
+	updt_list(a);
+	if ((*a)->data == (*a)->highest)
+		ra(a);
+	if ((*a)->next && (*b)->next)
+	{
+		if ((*b)->data < (*b)->next->data && (*a)->data > (*a)->next->data)
+			ss(a, b);
+	}
+	if ((*a)->next != NULL)
+	{
+		if ((*a)->data > (*a)->next->data)
+			sa(a);
+	}
+	if ((*b)->next != NULL)
+	{
+		if ((*b)->data < (*b)->next->data)
+			sb(b);
+	}
+}
 
 static void	to_bb(t_node **a, t_node **b)
 {
@@ -190,14 +216,19 @@ static void	to_bb(t_node **a, t_node **b)
 	while (rest2(a, mid, quart))
 	{
 		updt_list(a);
+		check_sizes(a, b);
 		if ((*a)->data < (mid + quart))
 			pb(a, b);
 		else
 			ra(a);
 	}
 	while (*a)
+	{
+		check_sizes(a, b);
 		pb(a, b);
+	}
 }
+
 
 static void	to_b(t_node **a, t_node **b)
 {
@@ -210,6 +241,7 @@ static void	to_b(t_node **a, t_node **b)
 	while (rest(a, quart))
 	{
 		updt_list(a);
+		check_sizes(a, b);
 		if ((*a)->data < quart)
 			pb(a, b);
 		else
@@ -218,6 +250,7 @@ static void	to_b(t_node **a, t_node **b)
 	while (rest(a, mid))
 	{
 		updt_list(a);
+		check_sizes(a, b);
 		if ((*a)->data < mid)
 			pb(a, b);
 		else

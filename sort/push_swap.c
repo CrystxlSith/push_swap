@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: crystal <crystal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 18:50:59 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/06/21 13:00:26 by crystal          ###   ########.fr       */
+/*   Updated: 2024/06/27 07:41:19 by jopfeiff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,9 @@ static void	sort_5(t_node **a, t_node **b, int count)
 {
 	int		j;
 	int		min;
-	// int		max;
 
 	j = 0;
 	min = find_lowest(a);
-	// max = find_highest(a);
 	while (j < count || !sorted(a, b))
 	{
 		if ((*a)->data == min && !sorted(a, b))
