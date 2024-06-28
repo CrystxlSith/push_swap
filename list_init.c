@@ -6,7 +6,7 @@
 /*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 14:15:55 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/06/24 15:34:45 by jopfeiff         ###   ########.fr       */
+/*   Updated: 2024/06/28 11:51:11 by jopfeiff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	else_init(t_node **head)
 		tmp->index = i;
 		tmp->highest = find_highest(&tmp);
 		tmp->lowest = find_lowest(&tmp);
-		tmp->median = (tmp->highest + tmp->lowest) / 2;
+		tmp->median = median(head);
 		tmp = tmp->next;
 		i++;
 	}

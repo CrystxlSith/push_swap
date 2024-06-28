@@ -6,7 +6,7 @@
 /*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 14:59:05 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/06/26 11:43:53 by jopfeiff         ###   ########.fr       */
+/*   Updated: 2024/06/28 11:50:53 by jopfeiff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef   struct s_node
 	int	data;
 	int	highest;
 	int	med_plus;
+	int all;
 	int	lowest;
 	int	median;
 	int	count;
@@ -38,6 +39,7 @@ void	print_list(t_node *head);
 char	**ft_split(char const *s, char c);
 int	list_init(t_node **head, char **argv, int flag);
 int	sorted(t_node **a, t_node **b);
+int	median(t_node **a);
 void	free_prog(t_node *a, char **argv, int flag, int i);
 void	sort_2(t_node **a);
 void	free_argv(char **argv);
