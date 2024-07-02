@@ -6,7 +6,7 @@
 /*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 18:23:38 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/07/02 07:56:16 by jopfeiff         ###   ########.fr       */
+/*   Updated: 2024/07/02 07:57:42 by jopfeiff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -290,10 +290,12 @@ static int	rest(t_node **a, int quart)
 static void	to_b(t_node **a, t_node **b)
 {
 	int	mid;
+	int flag;
 	int	quart;
 	int	three_quarts;
 	
 	updt_list(a);
+	flag = 0;
 	mid = (*a)->median;
 	quart = mid / 2;
 	three_quarts = mid + quart;
@@ -303,6 +305,7 @@ static void	to_b(t_node **a, t_node **b)
 		if ((*a)->next->next->next == NULL)
 		{
 			sort_3(a);
+			flag = 1;
 			break ;
 		}
 		if ((*a)->data < quart)
@@ -316,7 +319,7 @@ static void	to_b(t_node **a, t_node **b)
 		else
 			ra(a);
 	}
-	if ((*a)->next != NULL)
+	if ((*a)->next != NULL && flag == 0)
 		to_b(a, b);
 }
 // 	while (*a)
