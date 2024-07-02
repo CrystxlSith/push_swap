@@ -6,68 +6,11 @@
 /*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 18:23:38 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/07/02 07:57:42 by jopfeiff         ###   ########.fr       */
+/*   Updated: 2024/07/02 09:50:12 by jopfeiff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-
-// static	int	list_size(t_node **b)
-// {
-// 	t_node	*tmp;
-// 	int		i;
-
-// 	i = 0;
-// 	tmp = *b;
-// 	while (tmp)
-// 	{
-// 		tmp = tmp->next;
-// 		i++;
-// 	}
-// 	return (i);
-// }
-
-// static t_node	*find_lowest_list(t_node **a)
-// {
-// 	t_node	*tmp;
-
-// 	tmp = *a;
-// 	while (tmp->next)
-// 	{
-// 		if (tmp->data == tmp->lowest)
-// 			break;
-// 		tmp = tmp->next;
-// 	}
-// 	return (tmp);
-// }
-
-// static int	is_low(t_node **a)
-// {
-// 	t_node	*tmp;
-
-// 	tmp = *a;
-// 	while (tmp)
-// 	{
-// 		if (tmp->data < tmp->median)
-// 			return (1);
-// 		tmp = tmp->next;
-// 	}
-// 	return (0);
-// }
-
-// static t_node	*find_low(t_node **a)
-// {
-// 	t_node	*tmp;
-
-// 	tmp = *a;
-// 	while (tmp->next)
-// 	{
-// 		if (tmp->data < tmp->median)
-// 			break;
-// 		tmp = tmp->next;
-// 	}
-// 	return (tmp);
-// }
 
 static void	fill_arr(t_node **a, char *arr)
 {
@@ -125,6 +68,7 @@ int	median(t_node **a)
 {
 	char *arr;
 	int	i;
+	int	median;
 
 	i = list_size(a);
 	arr = (char *)malloc(sizeof(char) * i);
@@ -132,7 +76,9 @@ int	median(t_node **a)
 		return (0);
 	fill_arr(a, arr);
 	tab_sort(arr, i);
-	return (arr[i / 2]);
+	median = arr[i / 2];
+	free(arr);
+	return (median);
 }
 
 static void	updt_list(t_node **a)
@@ -176,59 +122,6 @@ static t_node	*find_high(t_node **list)
 	}
 	return (tmp);
 }
-// static void	sort_bef_med(t_node **a, t_node **b)
-// {
-// 	t_node	*tmp;
-// 	int		i;
-
-// 	i = 0;
-// 	tmp = NULL;
-// 	while (!sorted(b, NULL))
-// 	{
-// 		updt_list(b);
-// 		tmp = find_low(b);
-// 		if (tmp->index > tmp->total / 2)
-// 		{
-// 			while ((*b) != tmp)
-// 			{
-// 				if ((*b)->next == NULL)
-// 				{
-// 					pa(a, b);
-// 					break;
-// 				}
-// 				rrb(a);
-// 			}
-// 		}
-// 		else
-// 		{
-// 			while ((*a) != tmp)
-// 			{
-// 				if ((*a)->next == NULL)
-// 				{
-// 					pa(a, b);
-// 					break;
-// 				}
-// 				rb(a);
-// 			}
-// 		}
-// 		pb(a, b);
-// 	}
-
-// }
-
-// static int	rest2(t_node **a, int mid, int quart)
-// {
-// 	t_node	*tmp;
-
-// 	tmp = *a;
-// 	while (tmp)
-// 	{
-// 		if (tmp->data < (quart + mid))
-// 			return (1);
-// 		tmp = tmp->next;
-// 	}
-// 	return (0);
-// }
 
 static int	rest(t_node **a, int quart)
 {
@@ -243,101 +136,36 @@ static int	rest(t_node **a, int quart)
 	}
 	return (0);
 }
-// static void	to_bb(t_node **a, t_node **b)
-// {
-// 	int	mid;
-// 	int	total;
-// 	int	quart;
-// 	int	three_quarts;
-	
-// 	updt_list(a);
-// 	mid = (*a)->median;
-// 	total = mid * 2;
-// 	quart = mid / 2;
-// 	three_quarts = mid + quart;
-// 	while (rest(a, mid))
-// 	{
-// 		updt_list(a);
-// 		if ((*a)->data < quart)
-// 		{
-// 			pb(a, b);
-// 			if (*b)
-// 				rb(b);
-// 		}
-// 		else if ((*a)->data >= quart && (*a)->data < mid)
-// 			pb(a, b);
-// 		else
-// 			ra(a);
-// 	}
-// 	while (*a)
-// 	{
-// 		updt_list(a);
-// 		if ((*a)->data >= three_quarts)
-// 		{
-// 			pb(a, b);
-// 		}	
-// 		else if ((*a)->data < three_quarts)
-// 		{
-// 			pb(a, b);
-// 			rb(b);
-// 		}
-// 		else
-// 			ra(a);
-// 	}
-// }
 
 
 static void	to_b(t_node **a, t_node **b)
 {
 	int	mid;
-	int flag;
 	int	quart;
-	int	three_quarts;
 	
 	updt_list(a);
-	flag = 0;
 	mid = (*a)->median;
 	quart = mid / 2;
-	three_quarts = mid + quart;
 	while (rest(a, mid))
 	{
 		updt_list(a);
 		if ((*a)->next->next->next == NULL)
 		{
 			sort_3(a);
-			flag = 1;
-			break ;
+			return ;
 		}
 		if ((*a)->data < quart)
 		{
 			pb(a, b);
-			if (*b)
-				rb(b);
+			rb(b);
 		}
 		else if ((*a)->data >= quart && (*a)->data < mid)
 			pb(a, b);
 		else
 			ra(a);
 	}
-	if ((*a)->next != NULL && flag == 0)
-		to_b(a, b);
+	to_b(a, b);
 }
-// 	while (*a)
-// 	{
-// 		updt_list(a);
-// 		if ((*a)->data >= three_quarts)
-// 		{
-// 			pb(a, b);
-// 		}	
-// 		else if ((*a)->data < three_quarts)
-// 		{
-// 			pb(a, b);
-// 			rb(b);
-// 		}
-// 		else
-// 			ra(a);
-// 	}
-// }
 
 static void	to_a(t_node **a, t_node **b)
 {
@@ -359,6 +187,8 @@ static void	to_a(t_node **a, t_node **b)
 				rb(b);
 		}
 		pa(a, b);
+		if ((*a)->data > (*a)->next->data)
+			sa(a);
 	}
 }
 
@@ -369,7 +199,6 @@ void	big_sort(t_node **a, t_node **b)
 	if (!sorted(a, b))
 	{
 		to_b(a, b);
-		//to_bb(a, b);
 		to_a(a, b);
  	}
 }
