@@ -6,7 +6,7 @@
 /*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 18:23:38 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/06/28 11:57:54 by jopfeiff         ###   ########.fr       */
+/*   Updated: 2024/07/02 07:48:14 by jopfeiff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,7 +132,6 @@ int	median(t_node **a)
 		return (0);
 	fill_arr(a, arr);
 	tab_sort(arr, i);
-	ft_printf("%d\n", arr[i / 2]);
 	return (arr[i / 2]);
 }
 
@@ -217,19 +216,19 @@ static t_node	*find_high(t_node **list)
 
 // }
 
-static int	rest2(t_node **a, int mid, int quart)
-{
-	t_node	*tmp;
+// static int	rest2(t_node **a, int mid, int quart)
+// {
+// 	t_node	*tmp;
 
-	tmp = *a;
-	while (tmp)
-	{
-		if (tmp->data < (quart + mid))
-			return (1);
-		tmp = tmp->next;
-	}
-	return (0);
-}
+// 	tmp = *a;
+// 	while (tmp)
+// 	{
+// 		if (tmp->data < (quart + mid))
+// 			return (1);
+// 		tmp = tmp->next;
+// 	}
+// 	return (0);
+// }
 
 static int	rest(t_node **a, int quart)
 {
@@ -244,51 +243,93 @@ static int	rest(t_node **a, int quart)
 	}
 	return (0);
 }
+// static void	to_bb(t_node **a, t_node **b)
+// {
+// 	int	mid;
+// 	int	total;
+// 	int	quart;
+// 	int	three_quarts;
+	
+// 	updt_list(a);
+// 	mid = (*a)->median;
+// 	total = mid * 2;
+// 	quart = mid / 2;
+// 	three_quarts = mid + quart;
+// 	while (rest(a, mid))
+// 	{
+// 		updt_list(a);
+// 		if ((*a)->data < quart)
+// 		{
+// 			pb(a, b);
+// 			if (*b)
+// 				rb(b);
+// 		}
+// 		else if ((*a)->data >= quart && (*a)->data < mid)
+// 			pb(a, b);
+// 		else
+// 			ra(a);
+// 	}
+// 	while (*a)
+// 	{
+// 		updt_list(a);
+// 		if ((*a)->data >= three_quarts)
+// 		{
+// 			pb(a, b);
+// 		}	
+// 		else if ((*a)->data < three_quarts)
+// 		{
+// 			pb(a, b);
+// 			rb(b);
+// 		}
+// 		else
+// 			ra(a);
+// 	}
+// }
 
-static void	to_bb(t_node **a, t_node **b)
-{
-	int	mid;
-	int	quart;
-	updt_list(a);
-	mid = (*a)->median;
-	quart = mid / 2;
-	while (rest2(a, mid, quart))
-	{
-		updt_list(a);
-		if ((*a)->data < (mid + quart))
-			pb(a, b);
-		else
-			ra(a);
-	}
-	while (*a)
-		pb(a, b);
-}
 
 static void	to_b(t_node **a, t_node **b)
 {
 	int	mid;
 	int	quart;
+	int	three_quarts;
 	
 	updt_list(a);
 	mid = (*a)->median;
 	quart = mid / 2;
-	while (rest(a, quart))
-	{
-		updt_list(a);
-		if ((*a)->data < quart)
-			pb(a, b);
-		else
-			ra(a);
-	}
+	three_quarts = mid + quart;
 	while (rest(a, mid))
 	{
 		updt_list(a);
-		if ((*a)->data < mid)
+		if ((*a)->data < quart)
+		{
+			pb(a, b);
+			if (*b)
+				rb(b);
+		}
+		else if ((*a)->data >= quart && (*a)->data < mid)
 			pb(a, b);
 		else
 			ra(a);
 	}
+	if ((*a)->next != NULL)
+		to_b(a, b);
 }
+// 	while (*a)
+// 	{
+// 		updt_list(a);
+// 		if ((*a)->data >= three_quarts)
+// 		{
+// 			pb(a, b);
+// 		}	
+// 		else if ((*a)->data < three_quarts)
+// 		{
+// 			pb(a, b);
+// 			rb(b);
+// 		}
+// 		else
+// 			ra(a);
+// 	}
+// }
 
 static void	to_a(t_node **a, t_node **b)
 {
@@ -320,7 +361,7 @@ void	big_sort(t_node **a, t_node **b)
 	if (!sorted(a, b))
 	{
 		to_b(a, b);
-		to_bb(a, b);
+		//to_bb(a, b);
 		to_a(a, b);
  	}
 }
