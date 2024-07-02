@@ -6,7 +6,7 @@
 /*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 18:23:38 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/07/02 07:48:14 by jopfeiff         ###   ########.fr       */
+/*   Updated: 2024/07/02 07:56:16 by jopfeiff         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -300,6 +300,11 @@ static void	to_b(t_node **a, t_node **b)
 	while (rest(a, mid))
 	{
 		updt_list(a);
+		if ((*a)->next->next->next == NULL)
+		{
+			sort_3(a);
+			break ;
+		}
 		if ((*a)->data < quart)
 		{
 			pb(a, b);
