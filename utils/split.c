@@ -6,11 +6,11 @@
 /*   By: crystal <crystal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 15:32:00 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/06/14 22:53:27 by crystal          ###   ########.fr       */
+/*   Updated: 2024/07/05 11:38:21 by crystal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 static void	free_res(size_t i, char **array)
 {

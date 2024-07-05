@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   little_sort.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
+/*   By: crystal <crystal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 14:49:05 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/06/20 18:19:55 by jopfeiff         ###   ########.fr       */
+/*   Updated: 2024/07/05 13:31:28 by crystal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,31 +60,15 @@ static void	last_sort(t_node **a, t_node **b, int lowest, int highest)
 }
 void	sort_3(t_node **a)
 {
-	int	highest;
+	t_node	*highest;
 
-	highest = find_highest(a);
-	if ((*a)->data == highest)
-	{
-		if ((*a)->next->data > (*a)->next->next->data)
-		{
-			sa(a);
-			rra(a);
-		}
-		else
-			ra(a);
-	}
-	else if ((*a)->next->data == highest)
-	{
-			rra(a);
-			if ((*a)->data > (*a)->next->data)
-				sa(a);
-	}
-	else
-	{
-		if ((*a)->data > (*a)->next->data)
-			sa(a);
-	}
-	
+	highest = find_biggest_node(*a);
+	if(highest == *a)
+		ra(a);
+	else if (highest == (*a)->next)
+		rra(a);
+	if ((*a)->data > (*a)->next->data)
+		sa(a);
 }
 
 

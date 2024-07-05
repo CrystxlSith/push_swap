@@ -6,11 +6,11 @@
 /*   By: crystal <crystal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 14:36:16 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/07/05 10:39:39 by crystal          ###   ########.fr       */
+/*   Updated: 2024/07/05 11:40:08 by crystal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 int	check_char(char **argv, char *splitted, int flag)
 {

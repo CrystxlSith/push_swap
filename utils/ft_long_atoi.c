@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_long_atoi.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
+/*   By: crystal <crystal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 14:24:24 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/06/17 14:04:32 by jopfeiff         ###   ########.fr       */
+/*   Updated: 2024/07/05 11:40:21 by crystal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 long	ft_long_atoi(const char *nptr)
 {

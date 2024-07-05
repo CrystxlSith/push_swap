@@ -3,18 +3,18 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+         #
+#    By: crystal <crystal@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/29 15:13:11 by jopfeiff          #+#    #+#              #
-#    Updated: 2024/06/20 18:49:01 by jopfeiff         ###   ########.fr        #
+#    Updated: 2024/07/05 16:05:16 by crystal          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
-SRCS = free.c error_check.c push.c swap.c rotate.c reverse_rotate.c \
-	node_init.c list_init.c ft_long_atoi.c sort/push_swap.c find.c \
+SRCS = error_free/free.c error_free/error_check.c moves/push.c moves/swap.c moves/rotate.c moves/reverse_rotate.c \
+	node_init.c list_init.c utils/ft_long_atoi.c sort/push_swap.c find.c \
 		sort/little_sort.c main.c utils/sorted.c sort/sorting.c \
-			sort/big_sort.c
+			sort/turk_sort.c initialise_data.c
 CC = cc
 CFLAGS = -g3 -Wall -Wextra -Werror -I./includes/
 RM = rm -rf

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   reverse_rotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
+/*   By: crystal <crystal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 10:11:47 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/06/25 14:22:20 by jopfeiff         ###   ########.fr       */
+/*   Updated: 2024/07/05 11:38:53 by crystal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 // static void	reverse_rotate(t_node **ab)
 // {

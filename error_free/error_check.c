@@ -6,11 +6,11 @@
 /*   By: crystal <crystal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 14:27:26 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/07/04 16:11:21 by crystal          ###   ########.fr       */
+/*   Updated: 2024/07/05 11:39:59 by crystal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 // static int	is_space(int c)
 // {
