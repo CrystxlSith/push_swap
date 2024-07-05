@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   error_check.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
+/*   By: crystal <crystal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 14:27:26 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/06/25 11:15:43 by jopfeiff         ###   ########.fr       */
+/*   Updated: 2024/07/04 16:11:21 by crystal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	check_nbr(long nbr)
-{
-	if (nbr > 2147483647 || nbr < -2147483648)
-		return (0);
-	return (1);
-}
+// static int	is_space(int c)
+// {
+// 	if (c == ' ')
+// 		return (1);
+// 	return (0);
+// }
 
 int	ft_reapeat(t_node *head, int nbr)
 {

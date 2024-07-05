@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
+/*   By: crystal <crystal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 14:15:55 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/07/02 11:11:06 by jopfeiff         ###   ########.fr       */
+/*   Updated: 2024/07/04 16:15:55 by crystal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	list_init(t_node **head, char **argv, int flag)
 	while (argv[i])
 	{
 		nbr = ft_long_atoi(argv[i]);
-		if (!check_nbr(nbr) || !ft_reapeat(*head, (int)nbr))
+		if (!ft_reapeat(*head, (int)nbr) || nbr > INT_MAX || nbr < INT_MIN)
 			free_prog(*head, argv, flag, 1);
 		else
 			node_init(head, (int)nbr);
