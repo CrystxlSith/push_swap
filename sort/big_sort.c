@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   big_sort.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jopfeiff <jopfeiff@student.42.fr>          +#+  +:+       +#+        */
+/*   By: crystal <crystal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 18:23:38 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/07/02 09:50:12 by jopfeiff         ###   ########.fr       */
+/*   Updated: 2024/07/05 11:30:35 by crystal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,8 +163,8 @@ static void	to_b(t_node **a, t_node **b)
 			pb(a, b);
 		else
 			ra(a);
+		to_b(a, b);
 	}
-	to_b(a, b);
 }
 
 static void	to_a(t_node **a, t_node **b)
@@ -172,6 +172,14 @@ static void	to_a(t_node **a, t_node **b)
 	t_node *tmp;
 
 	tmp = NULL;
+	if ((*a)->next->next->next != NULL)
+	{
+		if ((*a)->data == (*a)->highest)
+			ra(a);
+		while ((*a)->next)
+			pb(a, b);
+		
+	}
 	while (*b)
 	{
 		updt_list(b);
