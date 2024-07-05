@@ -6,11 +6,32 @@
 /*   By: crystal <crystal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 14:47:38 by crystal           #+#    #+#             */
-/*   Updated: 2024/07/05 16:07:16 by crystal          ###   ########.fr       */
+/*   Updated: 2024/07/05 19:46:09 by crystal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static void	best_cost(t_node *a, t_node *b)
+{
+	int	len_stack_a;
+	int	len_stack_b;
+
+	len_stack_a = ft_lstsize(a);
+	len_stack_b = ft_lstsize(b);
+	while (a)
+	{
+		a->cost = a->index;
+		if (!(a->low_med))
+			a->cost = len_stack_a - a->index;
+		else if (a->target->low_med)
+			a->cost += a->target->index;
+		else
+			a->cost += len_stack_b - a->target->index;
+		a = a->next;
+	}
+	
+}
 
 static void	ft_target(t_node *a, t_node *b)
 {
@@ -35,7 +56,6 @@ static void	ft_target(t_node *a, t_node *b)
 			a->target = find_biggest_node(b);
 		else
 			a->target = target;
-		ft_printf("a->data = %d, a->target->data = %d\n", a->data, a->target->data);
 		a = a->next;
 	}
 }
@@ -45,4 +65,5 @@ void	fill_node(t_node *a, t_node *b)
 	ft_index(a);
 	ft_index(b);
 	ft_target(a, b);
+	best_cost(a, b);
 }

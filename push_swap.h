@@ -6,7 +6,7 @@
 /*   By: crystal <crystal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 14:59:05 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/07/05 16:03:48 by crystal          ###   ########.fr       */
+/*   Updated: 2024/07/05 19:41:02 by crystal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef   struct s_node
 	int				data;
 	int				highest;
 	int				lowest;
-	int				count;
+	int				cost;
 	int				index;
 	int				median;
 	bool			low_med;
@@ -48,7 +48,7 @@ void	free_prog(t_node *a, char **argv, int flag, int i);
 void	sort_2(t_node **a);
 void	ft_index(t_node *node);
 void	free_argv(char **argv);
-void	sorting(t_node **a, t_node **b, int count);
+void	sorting(t_node /* condition */**a, t_node **b, int count);
 void	free_list(t_node *head);
 long	ft_long_atoi(const char *nptr);
 void	big_sort(t_node **a, t_node **b);
