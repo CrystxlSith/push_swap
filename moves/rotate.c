@@ -6,7 +6,7 @@
 /*   By: crystal <crystal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 19:32:53 by crystal           #+#    #+#             */
-/*   Updated: 2024/07/05 11:38:57 by crystal          ###   ########.fr       */
+/*   Updated: 2024/07/08 16:16:41 by crystal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,3 +49,12 @@ void	rr(t_node **a, t_node **b)
 	rotate(b);
 	ft_printf("rr\n");
 }
+
+void	rotate_both(t_node **a, t_node **b, t_node *cheapest)
+{
+	while (*b != cheapest->target && *a != cheapest)
+		rr(a, b); 
+	ft_index(*a);
+	ft_index(*b);
+}
+

@@ -6,7 +6,7 @@
 /*   By: crystal <crystal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 18:08:31 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/07/05 14:23:02 by crystal          ###   ########.fr       */
+/*   Updated: 2024/07/08 15:53:32 by crystal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,19 @@ int find_highest(t_node **a)
 		cp = cp->next;
 	}
 	return (high);
+}
+
+t_node	*find_cheapest(t_node *a)
+{
+	if (!a)
+		return (NULL);
+	while (a)
+	{
+		if (a->lowest_price == true)
+			return (a);
+		a = a->next;
+	}
+	return (NULL);
 }
 
 int	find_lowest(t_node **a)

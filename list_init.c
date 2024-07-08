@@ -6,7 +6,7 @@
 /*   By: crystal <crystal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 14:15:55 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/07/05 13:58:54 by crystal          ###   ########.fr       */
+/*   Updated: 2024/07/08 17:06:36 by crystal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ void	print_list(t_node *head)
 int	list_init(t_node **head, char **argv, int flag)
 {
 	int		i;
-	long	nbr;
+	long	data;
 
 	i = 0;
-	nbr = 0;
+	data = 0;
 	if (!flag)
 	{	
 		if (ft_strncmp(ft_strrchr(argv[0], '/'), "/push_swap", 7) == 0)
@@ -39,11 +39,11 @@ int	list_init(t_node **head, char **argv, int flag)
 	}
 	while (argv[i])
 	{
-		nbr = ft_long_atoi(argv[i]);
-		if (!ft_reapeat(*head, (int)nbr) || nbr > INT_MAX || nbr < INT_MIN)
+		data = ft_long_atoi(argv[i]);
+		if (!ft_reapeat(*head, (int)data) || data > INT_MAX || data < INT_MIN)
 			free_prog(*head, argv, flag, 1);
 		else
-			node_init(head, (int)nbr);
+			node_init(head, (int)data);
 		i++;
 	}
 	if (!flag)
