@@ -6,7 +6,7 @@
 /*   By: crystal <crystal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 14:59:05 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/07/08 17:59:12 by crystal          ###   ########.fr       */
+/*   Updated: 2024/07/09 15:58:37 by crystal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ typedef   struct s_node
 	int				lowest;
 	int				cost;
 	int				index;
-	int				median;
 	bool			low_med;
 	bool			lowest_price;
 	struct s_node	*target;
@@ -38,13 +37,19 @@ typedef   struct s_node
 void	node_init(t_node **node, int data);
 void	print_list(t_node *head);
 char	**ft_split(char const *s, char c);
+char	**split_args(int argc, t_node *a, char *argv[]);
 int	list_init(t_node **head, char **argv, int flag);
 int	sorted(t_node **a, t_node **b);
+int	count_char(int ac, char **av);
 int	median(t_node **a);
 int	check_char(char **argv, char *splitted, int flag);
 t_node	*find_biggest_node(t_node *a);
 t_node	*find_cheapest(t_node *a);
+t_node	*find_lowest_node(t_node **list);
+t_node	*find_max(t_node *node); //Define a function that searches a node and returns the node with the smallest number
+t_node	*find_min(t_node *node); //Define a function that searches a node and returns the node with the smallest number
 void	fill_node_a(t_node *a, t_node *b);
+void	ft_up_min(t_node **a);
 void 	free_prog(t_node *a, char **argv, int flag, int i);
 void	fill_node_b(t_node *a, t_node *b);
 void	sort_2(t_node **a);

@@ -6,7 +6,7 @@
 #    By: crystal <crystal@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/29 15:13:11 by jopfeiff          #+#    #+#              #
-#    Updated: 2024/07/05 16:05:16 by crystal          ###   ########.fr        #
+#    Updated: 2024/07/09 13:41:50 by crystal          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 SRCS = error_free/free.c error_free/error_check.c moves/push.c moves/swap.c moves/rotate.c moves/reverse_rotate.c \
 	node_init.c list_init.c utils/ft_long_atoi.c sort/push_swap.c find.c \
 		sort/little_sort.c main.c utils/sorted.c sort/sorting.c \
-			sort/turk_sort.c initialise_data.c
+			sort/turk_sort.c initialise_data.c moves/last_move.c
 CC = cc
 CFLAGS = -g3 -Wall -Wextra -Werror -I./includes/
 RM = rm -rf

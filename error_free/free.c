@@ -6,7 +6,7 @@
 /*   By: crystal <crystal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 14:36:16 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/07/05 11:40:08 by crystal          ###   ########.fr       */
+/*   Updated: 2024/07/09 15:02:45 by crystal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int	check_char(char **argv, char *splitted, int flag)
 	{
 		if (!ft_isdigit(splitted[i]) && !ft_isspace(splitted[i]))
 		{
-			free(splitted);
 			free_prog(NULL, argv, flag, 1);
 		}
 		i++;

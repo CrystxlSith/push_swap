@@ -6,7 +6,7 @@
 /*   By: crystal <crystal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 18:08:31 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/07/08 15:53:32 by crystal          ###   ########.fr       */
+/*   Updated: 2024/07/09 14:00:35 by crystal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 void	ft_index(t_node *node)
 {
-	int		i;
+	int	i;
 	int	mid;
 
+	if (!node)
+		return ;
 	mid = len_list(node) / 2;
 	i = 0;
-	if(!node)
-		return ;
 	while (node)
 	{
 		node->index = i;
@@ -38,6 +38,8 @@ t_node	*find_biggest_node(t_node *a)
 	t_node	*biggest;
 	t_node	*cp;
 
+	if (!a)
+		return (NULL);
 	cp = a;
 	biggest = a;
 	while (cp != NULL)
@@ -49,10 +51,10 @@ t_node	*find_biggest_node(t_node *a)
 	return (biggest);
 }
 
-int find_highest(t_node **a)
+int	find_highest(t_node **a)
 {
-	int	high;
-	t_node *cp;
+	int		high;
+	t_node	*cp;
 
 	cp = *a;
 	high = (*a)->data;
@@ -80,7 +82,7 @@ t_node	*find_cheapest(t_node *a)
 
 int	find_lowest(t_node **a)
 {
-	int	lowest;
+	int		lowest;
 	t_node	*cp;
 
 	lowest = (*a)->data;

@@ -6,7 +6,7 @@
 /*   By: crystal <crystal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 14:15:55 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/07/08 17:06:36 by crystal          ###   ########.fr       */
+/*   Updated: 2024/07/09 15:55:38 by crystal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	list_init(t_node **head, char **argv, int flag)
 	i = 0;
 	data = 0;
 	if (!flag)
-	{	
+	{
 		if (ft_strncmp(ft_strrchr(argv[0], '/'), "/push_swap", 7) == 0)
 			i++;
 	}
@@ -50,4 +50,3 @@ int	list_init(t_node **head, char **argv, int flag)
 		i -= 1;
 	return (i);
 }
-

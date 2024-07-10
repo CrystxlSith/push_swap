@@ -6,7 +6,7 @@
 /*   By: crystal <crystal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 11:49:02 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/07/08 17:06:36 by crystal          ###   ########.fr       */
+/*   Updated: 2024/07/09 16:02:04 by crystal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@ static void	init_params(t_node **new)
 	(*new)->index = 0;
 	(*new)->highest = 0;
 	(*new)->lowest = 0;
-	(*new)->median = 0;
+	(*new)->index = 0;
+	(*new)->cost = 0;
+	(*new)->low_med = 0;
+	(*new)->lowest_price = 0;
 }
 
 t_node	*find_last(t_node *node)
@@ -36,7 +39,7 @@ void	node_init(t_node **node, int data)
 
 	if (!node)
 		return ;
-	new = malloc(sizeof(t_node));
+	new = calloc(1, sizeof(t_node));
 	if (!new)
 		return ;
 	new->next = NULL;

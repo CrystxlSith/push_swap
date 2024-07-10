@@ -6,28 +6,69 @@
 /*   By: crystal <crystal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 14:47:38 by crystal           #+#    #+#             */
-/*   Updated: 2024/07/08 18:36:11 by crystal          ###   ########.fr       */
+/*   Updated: 2024/07/09 17:13:29 by crystal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+t_node	*find_min(t_node *node)
+{
+	long			min;
+	t_node	*min_node;
+
+	if (!node)
+		return (NULL);
+	min = LONG_MAX;
+	while (node)
+	{
+		if (node->data < min)
+		{
+			min = node->data;
+			min_node = node;
+		}
+		node = node->next;
+	}
+	return (min_node); 
+}
+
+t_node	*find_max(t_node *node)
+{
+	long			max;
+	t_node	*min_node;
+
+	if (!node)
+		return (NULL);
+	max = LONG_MAX;
+	while (node)
+	{
+		if (node->data < max)
+		{
+			max = node->data;
+			min_node = node;
+		}
+		node = node->next;
+	}
+	return (min_node); 
+}
+
+
 static void	best_cost(t_node *a, t_node *b)
 {
-	int	len_stack_a;
-	int	len_stack_b;
+	int	len_node_a;
+	int	len_node_b;
 
-	len_stack_a = len_list(a);
-	len_stack_b = len_list(b);
+	len_node_a = len_list(a);
+	len_node_b = len_list(b);
 	while (a)
 	{
 		a->cost = a->index;
 		if (!(a->low_med))
-			a->cost = len_stack_a - a->index;
-		else if (a->target->low_med)
+			a->cost = len_node_a - (a->index);
+		if (a->target->low_med)
 			a->cost += a->target->index;
 		else
-			a->cost += len_stack_b - a->target->index;
+			a->cost += len_node_b - (a->target->index);
 		a = a->next;
 	}
 	
@@ -41,8 +82,8 @@ static void	ft_target_a(t_node *a, t_node *b)
 
 	while (a)
 	{
-		tmp_b = b;
 		best = LONG_MIN;
+		tmp_b = b;
 		while (tmp_b)
 		{
 			if (tmp_b->data < a->data && tmp_b->data > best)
@@ -53,7 +94,7 @@ static void	ft_target_a(t_node *a, t_node *b)
 			tmp_b = tmp_b->next;
 		}
 		if (best == LONG_MIN)
-			a->target = find_biggest_node(b);
+			a->target = find_max(b);
 		else
 			a->target = target;
 		a = a->next;
@@ -80,7 +121,7 @@ static void	ft_target_b(t_node *a, t_node *b)
 			tmp_a = tmp_a->next;
 		}
 		if (best == LONG_MAX)
-			b->target = find_cheapest(a);
+			b->target = find_min(a);
 		else
 			b->target = target;
 		b = b->next;
