@@ -6,7 +6,7 @@
 #    By: crystal <crystal@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/29 15:13:11 by jopfeiff          #+#    #+#              #
-#    Updated: 2024/07/10 11:46:14 by crystal          ###   ########.fr        #
+#    Updated: 2024/07/10 16:54:29 by crystal          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,22 +22,40 @@ RM = rm -rf
 NAME = libftpushswap.a
 OBJS = $(SRCS:.c=.o)
 
-all: $(NAME)
+RED    = \033[31m
+GREEN  = \033[32m
+YELLOW = \033[33m
+BLUE   = \033[34m
+MAGENTA= \033[35m
+CYAN   = \033[36m
+RESET  = \033[0m
 
+.SILENT:
+
+all: push_swap
+
+push_swap: $(NAME) $(OBJS)
+	echo "${CYAN}Compiling Push_Swap...${RESET}"
+	cc libftpushswap.a -o push_swap
+	echo "${GREEN}Succes!!!${RESET}"
 $(NAME): $(OBJS)
-	$(MAKE) -C ./libft
+	echo "${CYAN}Compiling libft...${RESET}"
+	$(MAKE) --no-print-directory -C ./libft
 	cp libft/libft.a $(NAME)
 	ar rc $(NAME) $(OBJS)
 	mkdir objs
 	mv *.o ./objs && mv utils/*.o ./objs && mv sort/*.o ./objs
-	cc libftpushswap.a -o push_swap
 clean:
-	$(MAKE) clean -C ./libft
+	echo "${RED}Cleaning libft && Push_swap...${RESET}"
+	$(MAKE) clean --no-print-directory -C ./libft
 	$(RM) $(OBJS) objs
+	echo "${GREEN}Succes!!!${RESET}"
 	
 fclean: clean
-	$(MAKE) fclean -C ./libft
-	$(RM) $(NAME)
+	$(MAKE) fclean --no-print-directory -C ./libft
+	echo "${RED}Cleaning exucutable files...${RESET}"
+	$(RM) $(NAME) push_swap
+	echo "${GREEN}Succes!!!${RESET}"
 re: fclean all
 
 .PHONY: all clean fclean re
