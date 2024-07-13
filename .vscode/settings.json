@@ -1,13 +1,5 @@
 {
 	"files.associations": {
-		"push_swap.h": "c",
-		"algorithm": "c",
-		"array": "c",
-		"fstream": "c",
-		"istream": "c",
-		"limits": "c",
-		"functional": "c",
-		"regex": "c",
-		"typeinfo": "c"
+		"mlx_int.h": "c"
 	}
 }

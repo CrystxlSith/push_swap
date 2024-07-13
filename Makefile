@@ -5,21 +5,28 @@
 #                                                     +:+ +:+         +:+      #
 #    By: crystal <crystal@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/05/29 15:13:11 by jopfeiff          #+#    #+#              #
-#    Updated: 2024/07/10 16:54:29 by crystal          ###   ########.fr        #
+#    Created: 2024/07/11 19:00:12 by crystal           #+#    #+#              #
+#    Updated: 2024/07/13 19:59:33 by crystal          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+SRCS = main.c srcs/errors/errors_end.c srcs/errors/ft_error.c srcs/init/get_map.c srcs/init/init_map.c srcs/inputs/handler.c \
+		srcs/inputs/check_map.c srcs/utils/utils.c srcs/init/mlx_init.c srcs/init/render.c
+			
+UNAME := $(shell uname)
 
-SRCS = error_free/free.c error_free/error_check.c moves/push.c moves/swap.c moves/rotate.c moves/reverse_rotate.c \
-	node_init.c list_init.c utils/ft_long_atoi.c sort/push_swap.c find.c \
-		sort/little_sort.c main.c utils/sorted.c sort/sorting.c \
-			sort/turk_sort.c initialise_data.c moves/last_move.c \
-				utils/len_list.c find_2.c
+ifeq ($(shell uname), Linux)
+	INCLUDES = -I/usr/include -Imlx
+else
+	INCLUDES = -I/opt/X11/include -Imlx
+endif
 CC = cc
 CFLAGS = -g3 -Wall -Wextra -Werror -I./includes/
 RM = rm -rf
-NAME = libftpushswap.a
+EXEC = so_long
+NAME = so_long.a
+MLX_DIR = ./mlx
+MLX_LIB = $(MLX_DIR)/libmlx_$(UNAME).a
 OBJS = $(SRCS:.c=.o)
 
 RED    = \033[31m
@@ -29,22 +36,34 @@ BLUE   = \033[34m
 MAGENTA= \033[35m
 CYAN   = \033[36m
 RESET  = \033[0m
+ifeq ($(shell uname), Linux)
+	MLX_FLAGS = mlx/libmlx.a mlx/libmlx_Linux.a -lX11 -lXext
+else
+	MLX_FLAGS = -Lmlx -lmlx -L/usr/X11/lib -lXext -lX11 -framework OpenGL -framework AppKit
+endif
+ 
 
 .SILENT:
 
-all: push_swap
+all: $(MLX_LIB) so_long
+# [...]
+ 
+# .c.o:
+# 	$(CC) $(CFLAGS) -c -o $(EXEC) $@ $< $(INCLUDES)
 
-push_swap: $(NAME) $(OBJS)
-	echo "${CYAN}Compiling Push_Swap...${RESET}"
-	cc libftpushswap.a -o push_swap
+so_long: $(NAME) $(OBJS)
+	echo "${CYAN}Compiling so_long...${RESET}"
+	cc so_long.a libft.a mlx/libmlx.a mlx/libmlx_Linux.a -lX11 -lXext -o so_long
 	echo "${GREEN}Succes!!!${RESET}"
 $(NAME): $(OBJS)
 	echo "${CYAN}Compiling libft...${RESET}"
 	$(MAKE) --no-print-directory -C ./libft
-	cp libft/libft.a $(NAME)
+	cp libft/libft.a ../so_long
 	ar rc $(NAME) $(OBJS)
 	mkdir objs
-	mv *.o ./objs && mv utils/*.o ./objs && mv sort/*.o ./objs
+	mv $(OBJS) objs
+$(MLX_LIB):
+	@make -C $(MLX_DIR)
 clean:
 	echo "${RED}Cleaning libft && Push_swap...${RESET}"
 	$(MAKE) clean --no-print-directory -C ./libft
@@ -54,7 +73,7 @@ clean:
 fclean: clean
 	$(MAKE) fclean --no-print-directory -C ./libft
 	echo "${RED}Cleaning exucutable files...${RESET}"
-	$(RM) $(NAME) push_swap
+	$(RM) $(NAME) so_long
 	echo "${GREEN}Succes!!!${RESET}"
 re: fclean all
 
