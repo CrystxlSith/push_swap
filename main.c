@@ -6,7 +6,7 @@
 /*   By: crystal <crystal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 17:07:36 by crystal           #+#    #+#             */
-/*   Updated: 2024/07/13 19:58:28 by crystal          ###   ########.fr       */
+/*   Updated: 2024/07/13 21:45:26 by crystal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_init_sprites(t_mlx_data *data)
 {
-	data->img.ground1 = mlx_xpm_file_to_image(data->mlx, "sprites/Grass.xpm", &data->img.x, &data->img.y);
+	data->img.ground1 = mlx_xpm_file_to_image(data->mlx, "sprites/Grass1.xpm", &data->img.x, &data->img.y);
 	data->img.ground2 = mlx_xpm_file_to_image(data->mlx, "sprites/Grass2.xpm", &data->img.x, &data->img.y);
 	data->img.chest_closed = mlx_xpm_file_to_image(data->mlx, "sprites/Chest_closed.xpm", &data->img.x, &data->img.y);
 	data->img.chest_open = mlx_xpm_file_to_image(data->mlx, "sprites/Chest_open.xpm", &data->img.x, &data->img.y);
@@ -53,7 +53,7 @@ int	main(int argc, char **argv)
 	ft_mlx_init(data);
 	ft_init_sprites(data);
 	render_map(data);
-	//mlx_put_image_to_window(data->mlx, data->win, data->img.player_front, 32, 32);
+	//mlx_put_image_to_window(data->mlx, data->win, data->img.player_front, 64, 64);
 	mlx_key_hook(data->win, handle_input, &data);
 	//print_image(data, "assets/.xpm", 100, 100);
 	printf("Window created, count = %d\n", data->count);
