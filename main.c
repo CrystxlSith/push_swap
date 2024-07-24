@@ -6,7 +6,7 @@
 /*   By: crystal <crystal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 18:50:00 by jopfeiff          #+#    #+#             */
-/*   Updated: 2024/07/10 14:45:09 by crystal          ###   ########.fr       */
+/*   Updated: 2024/07/24 11:04:10 by crystal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	count_char(int ac, char **av)
 		}
 		i++;
 	}
-	return (count);
+	return (count + ac - 1);
 }
 
 int	main(int argc, char *argv[])
@@ -45,10 +45,10 @@ int	main(int argc, char *argv[])
 	b = NULL;
 	if ((argc == 1) || (argc == 2 && !argv[1][0]))
 		free_prog(a, argv, 0, 1);
-	if (argc > 2)
-		splitted = split_args(argc, a, argv);
-	else if (argc == 2)
+	if (argc == 2)
 		splitted = ft_split(argv[1], ' ');
+	else if (argc > 2)
+		splitted = split_args(argc, a, argv);
 	if (!splitted)
 		free_prog(a, splitted, 1, 1);
 	flag = 1;

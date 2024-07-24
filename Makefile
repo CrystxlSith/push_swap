@@ -6,7 +6,7 @@
 #    By: crystal <crystal@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/29 15:13:11 by jopfeiff          #+#    #+#              #
-#    Updated: 2024/07/10 16:54:29 by crystal          ###   ########.fr        #
+#    Updated: 2024/07/24 10:33:02 by crystal          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,8 +43,6 @@ $(NAME): $(OBJS)
 	$(MAKE) --no-print-directory -C ./libft
 	cp libft/libft.a $(NAME)
 	ar rc $(NAME) $(OBJS)
-	mkdir objs
-	mv *.o ./objs && mv utils/*.o ./objs && mv sort/*.o ./objs
 clean:
 	echo "${RED}Cleaning libft && Push_swap...${RESET}"
 	$(MAKE) clean --no-print-directory -C ./libft
